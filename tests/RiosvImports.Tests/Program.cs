@@ -59,6 +59,12 @@ void Check(string name, bool ok, string? detail = null)
 {
     Console.WriteLine($"  {(ok ? "OK  " : "FAIL")}  {name}{(detail is null ? "" : "  -> " + detail)}");
     if (ok) pass++; else fail++;
+
+    // В GitHub Actions провалът излиза и като бележка към хода: бележките се
+    // виждат без вход, а целият дневник — само за влезлия.
+    if (!ok && Environment.GetEnvironmentVariable("GITHUB_ACTIONS") == "true")
+        Console.WriteLine("::error::" + $"{name}{(detail is null ? "" : " -> " + detail)}"
+            .Replace("%", "%25").Replace("\r", "%0D").Replace("\n", "%0A"));
 }
 
 // =============================================== 1. Приложение 9 (годишен)
