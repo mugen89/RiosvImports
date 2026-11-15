@@ -16740,17 +16740,17 @@ Console.WriteLine("### ТЕСТ - обновяване и известия");
         NewsFeed.Parse($$"""[{ "id": "x", "date": "2026-11-01", "title": "T", "body": "{{new string('а', 5000)}}" }]""",
             "1.3.0", today)?[0].Body.Length <= 2001);
 
-    // Образецът за хранилището с изданията се пише на ръка — и трябва да се чете.
-    // Търси се нагоре по папките: схемите има и до самия тест, а образеца — само в кода.
+    // Истинският news.json (в корена на хранилището) се пише на ръка — и трябва да
+    // се чете. Търси се нагоре по папките, до папката с RiosvImports.sln.
     string? template = null;
 
     for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null && template is null; dir = dir.Parent)
     {
-        var candidate = Path.Combine(dir.FullName, "tools", "releases-repo", "news.json");
-        if (File.Exists(candidate)) template = candidate;
+        var candidate = Path.Combine(dir.FullName, "news.json");
+        if (File.Exists(candidate) && File.Exists(Path.Combine(dir.FullName, "RiosvImports.sln"))) template = candidate;
     }
 
-    Check("образецът news.json се чете и има съобщение",
+    Check("news.json в корена се чете и има съобщение",
         template is not null && NewsFeed.Parse(File.ReadAllText(template), "1.3.0", today) is { Count: > 0 },
         template ?? "няма го нагоре по папките");
 

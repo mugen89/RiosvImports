@@ -1,13 +1,13 @@
 # Издание при етикет: „git tag v1.3.0 && git push origin v1.3.0“.
 #
 # Прави същото като tools\release.ps1 на ръка: проверки, сглобяване, пакет на
-# Velopack с бележките от CHANGELOG.md и качване в публичното хранилище с
-# изданията (виж UpdateFeed.cs). Етикет с тире — „v1.4.0-beta.1“ — излиза като
-# пробно издание и стига само до тези, които са го поискали в „Настройки“.
+# Velopack с бележките от CHANGELOG.md и качване под „Releases“ на хранилището
+# (виж UpdateFeed.cs). Етикет с тире — „v1.4.0-beta.1“ — излиза като пробно
+# издание и стига само до тези, които са го поискали в „Настройки“.
 #
-# Нужна е тайна RELEASES_TOKEN в това хранилище: ключ (fine-grained token) с
-# право „Contents: Read and write“ САМО върху хранилището с изданията. Вграденият
-# GITHUB_TOKEN не става — той пише само в хранилището, в което върви.
+# Докато кодът и изданията са в едно хранилище, стига вграденият GITHUB_TOKEN
+# (правото „contents: write“ отдолу). Ако изданията минат в отделно хранилище,
+# тук идва тайна с ключ за него — виж docs\КЪМ_GITHUB.md.
 name: release
 
 on:
@@ -15,7 +15,7 @@ on:
     tags: ['v*']
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   release:
@@ -42,7 +42,7 @@ jobs:
       - name: Издание
         shell: pwsh
         env:
-          RELEASES_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+          RELEASES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           $version = '${{ github.ref_name }}'.TrimStart('v')
           ./tools/release.ps1 -Version $version -Upload
