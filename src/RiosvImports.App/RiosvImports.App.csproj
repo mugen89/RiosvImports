@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <AssemblyName>RIOSV Imports</AssemblyName>
+    <RootNamespace>RiosvImports.App</RootNamespace>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RiosvImports.Core\RiosvImports.Core.csproj" />
+    <ProjectReference Include="..\RiosvImports.Account\RiosvImports.Account.csproj" />
+    <ProjectReference Include="..\RiosvImports.Data\RiosvImports.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Velopack" Version="0.0.1298" />
+  </ItemGroup>
+
+  <!-- Тестовете сглобяват контролите наум, за да хванат грешка в конструктор,
+       която нито компилаторът, нито снимка на екрана показват. -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="RiosvImports.Tests" />
+  </ItemGroup>
+
+  <!-- Схемите вървят заедно с програмата: те са източникът на всички правила. -->
+  <ItemGroup>
+    <Content Include="..\..\schemas\*.xsd" LinkBase="schemas" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

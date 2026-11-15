@@ -1,0 +1,30 @@
+# Сглобяване и проверки при всяко качване.
+#
+# Тестът е една програма без зависимости: връща различно от нула при провал и
+# това спира работния поток. Истинският износ от „Деметра“ не е в хранилището —
+# проверките по него се пропускат сами.
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Сглобяване
+        run: dotnet build --nologo -c Release
+
+      - name: Проверки
+        run: dotnet run --project tests/RiosvImports.Tests -c Release --no-build

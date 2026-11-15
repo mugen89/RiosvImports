@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <!-- Само заради Lang: надписите, които тези проекти връщат, се четат от
+         потребителя и трябва да следват езика на програмата. Core е долният
+         слой и няма собствени зависимости, така че връзката е еднопосочна. -->
+    <ProjectReference Include="..\RiosvImports.Core\RiosvImports.Core.csproj" />
+  </ItemGroup>
+
+</Project>

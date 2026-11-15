@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Без „-windows“, за да може тестовият проект да го ползва. Единственото
+         зависещо от Windows място е TokenStore и то е обозначено изрично. -->
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <UseWindowsForms>false</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="9.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <!-- Само заради Lang: надписите, които тези проекти връщат, се четат от
+         потребителя и трябва да следват езика на програмата. Core е долният
+         слой и няма собствени зависимости, така че връзката е еднопосочна. -->
+    <ProjectReference Include="..\RiosvImports.Core\RiosvImports.Core.csproj" />
+  </ItemGroup>
+
+</Project>

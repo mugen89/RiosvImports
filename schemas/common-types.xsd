@@ -1,0 +1,3776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://niso.tlogica.com/common-types.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://niso.tlogica.com/common-types.xsd"
+           elementFormDefault="qualified">
+    <xs:simpleType name="ImportType">
+        <xs:restriction base="xs:string">
+            <!--            <xs:enumeration value="APPEND">-->
+            <!--                <xs:annotation>-->
+            <!--                    <xs:documentation>С добавяне</xs:documentation>-->
+            <!--                </xs:annotation>-->
+            <!--            </xs:enumeration>-->
+            <!-- извън бита -->
+            <xs:enumeration value="REPLACE">
+                <xs:annotation>
+                    <xs:documentation>С заместване</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="depotCeils">
+        <xs:annotation>
+            <!-- N_B_CELL_TYPE -->
+            <xs:documentation>Категории (тип) клетки</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="О">
+                <xs:annotation>
+                    <xs:documentation>Клетка опасни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н">
+                <xs:annotation>
+                    <xs:documentation>Клетка не-опасни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="И">
+                <xs:annotation>
+                    <xs:documentation>Клетка инертни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="baselConvention">
+        <xs:annotation>
+            <!-- N_BASEL_CONVETION -->
+            <xs:documentation>Базелска конвенция</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Y 1">
+                <xs:annotation>
+                    <xs:documentation>Клинични отпадъци от лечебната дейност в болници, медицински центрове и клиники
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 2">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството и приготвянето на фармацевтични продукти
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 3">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни фармацевтични, лекарствени и медицински средства</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 4">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, получаването и употребата на биоциди и
+                        фитофармацевтични препарати
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 5">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, получаването и употребата на консерванти за
+                        дървесина
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 6">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, получаването и употребата на органични разтворители
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 7">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от термична обработка и темпериращи операции, съдържащи цианиди
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 8">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни минерални масла, неподходящи за първоначалното им предназначение
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 9">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни водомаслени, водовъглеводородни смеси и емулсии</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 10">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни вещества и продукти, съдържащи или замърсени с полихлорирани бифенили
+                        (ПХБ) и/или полихлорирани терфенили (ПХТ) или полибромирани бифенили (ПББ), или техните примеси
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 11">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни смолисти остатъци от рафиниране, дестилация или всякаква пиролитична
+                        обработка
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 12">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, получаването и употребата на мастила, багрила,
+                        пигменти, бои, лакове и политури
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 13">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, получаването и употребата на синтетични смоли, латекс,
+                        пластификатори, лепила/свързващи материали
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 14">
+                <xs:annotation>
+                    <xs:documentation>Отпадни химически вещества, произтичащи от изследователска и развойна дейност и
+                        обучение, които не са определени и/или са нови и чието въздействие върху човека и/или околната
+                        среда е неизвестно
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 15">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци с експлозивен характер, непопадащи под друго законодателство
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 16">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, получаването и употребата на фотографски химикали и
+                        материали за обработка на фотоматериали
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 17">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от повърхностна обработка на метали и пластмаси</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 18">
+                <xs:annotation>
+                    <xs:documentation>Остатъци от обезвреждане на промишлени отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 19">
+                <xs:annotation>
+                    <xs:documentation>Метални карбонили</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 20">
+                <xs:annotation>
+                    <xs:documentation>Берилий: съединения на берилия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 21">
+                <xs:annotation>
+                    <xs:documentation>Съединения на шествалентен хром</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 22">
+                <xs:annotation>
+                    <xs:documentation>Съединения на медта</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 23">
+                <xs:annotation>
+                    <xs:documentation>Съединения на цинка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 24">
+                <xs:annotation>
+                    <xs:documentation>Арсен: съединения на арсен</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 25">
+                <xs:annotation>
+                    <xs:documentation>Селен: съединения на селен</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 26">
+                <xs:annotation>
+                    <xs:documentation>Кадмий: съединения на кадмия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 27">
+                <xs:annotation>
+                    <xs:documentation>Антимон; съединения на антимона</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 28">
+                <xs:annotation>
+                    <xs:documentation>Телур: съединения на телура</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 29">
+                <xs:annotation>
+                    <xs:documentation>Живак: съединения на живака</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 30">
+                <xs:annotation>
+                    <xs:documentation>Талий: съединения на талия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 31">
+                <xs:annotation>
+                    <xs:documentation>Олово: съединения на оловото</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 32">
+                <xs:annotation>
+                    <xs:documentation>Неорганични съединения на флуорина, с изключение на калциевия флуорид
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 33">
+                <xs:annotation>
+                    <xs:documentation>Неорганични цианиди</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 34">
+                <xs:annotation>
+                    <xs:documentation>Киселинни разтвори или киселини в твърдо състояние</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 35">
+                <xs:annotation>
+                    <xs:documentation>Основни съединения или твърди основи</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 36">
+                <xs:annotation>
+                    <xs:documentation>Азбест (прах и влакна)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 37">
+                <xs:annotation>
+                    <xs:documentation>Органични съединения на фосфора</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 38">
+                <xs:annotation>
+                    <xs:documentation>Органични цианиди</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 39">
+                <xs:annotation>
+                    <xs:documentation>Феноли: фенолни съединения, включително хлорофеноли</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 40">
+                <xs:annotation>
+                    <xs:documentation>Етери</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 41">
+                <xs:annotation>
+                    <xs:documentation>Халогенизирани органични разтворители</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 42">
+                <xs:annotation>
+                    <xs:documentation>Органични разтворители, с изключение на халогенизираните разтворители
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 43">
+                <xs:annotation>
+                    <xs:documentation>Всякакви материали от типа на полихлорирания дибензофуран</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 44">
+                <xs:annotation>
+                    <xs:documentation>Всякакви материали от типа на полихлорирания дибензопидиоксин</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 45">
+                <xs:annotation>
+                    <xs:documentation>Органохалогенни съединения, с изключение на веществата, упоменати в това
+                        приложение (например У 39, У 41, У 42, У 43, У 44)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 46">
+                <xs:annotation>
+                    <xs:documentation>Битови отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Y 47">
+                <xs:annotation>
+                    <xs:documentation>Остатъци, произхождащи от изгарянето на битови отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="baselConventionCode">
+        <xs:annotation>
+            <!-- n_basel_convetion_code -->
+            <xs:documentation>Базелска конвенция - кодове</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A3060">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от нитроцелулоза</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3070">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от феноли, фенолни съединения, включително хлорфенол под формата на
+                        течност или утайка
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3080">
+                <xs:annotation>
+                    <xs:documentation>Други отпадъци, неупоменати в списък Б</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3090">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от прах, пепел, утайки и брашно от обработени кожи, когато съдържат
+                        съединения на шест-валентен хром или биоциди (виж позиция В3100)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3100">
+                <xs:annotation>
+                    <xs:documentation>Изрезки и други отпадъци от обработена кожа, или от смесена кожа, негодни за
+                        производството на кожени изделия, съдържащи съединения на шест-валентен хром или биоциди (виж
+                        позиция В3090)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3110">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от кожаро-кожухарството, съдържащи съединения на шест-валентен хром или
+                        биоциди или инфекциозни субстанции (виж позиция В3110)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3120">
+                <xs:annotation>
+                    <xs:documentation>Фини частици от шредиране</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3130">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от органични фосфорни съединения</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3140">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от нехалогенирани органични разтворители, с изключение на
+                        тези,специфицирани в списък Б
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3150">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от халогенирани органични разтворители</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3160">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни халогенирани и нехалогенирани безводни дестилатни остатъци, произхождащи
+                        от операциите по възстановяване на органичните разтворители
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3170">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството на алифатни халогенирани въглеводороди (като хлорметан,
+                        дихлоретан, винил хлорид, винилиденхлорид, алилхлорид и епихлорхидрин)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3190">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни катранени остатъци (с изключение на асфалтови цименти) произхождащи от
+                        рафиниране, дестилация и всякакви други пиролизни обработки на органични материали
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3200">
+                <xs:annotation>
+                    <xs:documentation>Битуминозни материали (асфалтови отпадъци) от пътно-строителни дейности и
+                        поддръжка, съдържащи катран (виж позиция B2130)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4010">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, приготвянето и употребата на фармацевтични продукти, с
+                        изключение на тези, специфицирани в списък Б
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4020">
+                <xs:annotation>
+                    <xs:documentation>Клинични и съпътстващи отпадъци; това са отпадъци, получавани от лекарската,
+                        зъболекарската, ветеринарната или подобни практики, и отпадъци получени в болници или други
+                        съоръжения по време на диагностициране или лечение на пациентите или научноизследователски
+                        проекти
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4030">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, приготвянето и употребата на биоциди и препарати за
+                        фитосанитарна опазване, включително отпадъчни пестициди и хербициди, които не са специфицирани,
+                        с изтекъл срок на годност (2 ) или негодни за употребата, за която са предназначени
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4040">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, приготвянето и употребата на дървесни консерванти
+                        (3)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4050">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, които съдържат, състоят се от или са замърсени с едно от следните:
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4060">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни смеси от масла и вода, въглеводороди и вода, емулсии</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4070">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, приготвянето и употребата на мастила, бои, пигменти,
+                        оцветители, лакове и политури, с изключение на такива, специфицирани в списък Б (виж позиция
+                        B4010)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4080">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци с експлозивни свойства (с изключение на тези, специфицирани в списък Б)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4090">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни разтвори на киселини и основи, различни от посочените в съответната
+                        позиция в списък Б (виж позиция B2120)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4100">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от прибори за контрол на изходящи промишлени газове, с изключение на
+                        тези, специфицирани в списък Б
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4110 ">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, които съдържат, състоят се от или са замърсени с някои от следните:
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4120">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, които съдържат, състоят се от или са замърсени с пероксиди
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4130">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от опаковки и контейнери, съдържащи вещества от приложение I в такива
+                        концентрации, че да проявяват опасните свойства от приложение III
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4140">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, състоящи се от или съдържащи химикали които не са специфицирани или с
+                        изтекъл срок на годност (1), отговарящи на категориите към приложение I и проявяващи опасните
+                        свойства от приложение III
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4150">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от химически вещества, получени от развойни или преподавателски дейности,
+                        които не са идентифицирани и/или са нови и чиито въздействия върху здравето на човека и/или
+                        околната среда са непознати
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A4160">
+                <xs:annotation>
+                    <xs:documentation>Отработен активен въглен, невключен в списък Б (виж позиция B2060)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1010">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от метали и метални сплави в метална недисперсионна форма:
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1020">
+                <xs:annotation>
+                    <xs:documentation>Чист, незамърсен метален скрап, включително и сплави, в окончателно пресовани
+                        форми (листа, плочи, пръти, греди и т.н.) от:
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2100">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от алуминиеви хидроксиди и отпадъци от диалуминиев триоксид, и остатъци
+                        от производството на алуминий, с изключение на материали, използвани за очистване на газовете,
+                        както и при процесите на флокулация или филтрация
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2110">
+                <xs:annotation>
+                    <xs:documentation>Бокситни остатъци (червена утайка) (pH стабилизирано до по-малко от 11,5)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2120">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни кисели или основни разтвори с pH по-голямо от 2 и по-малко от 11,5,
+                        които не са разяждащи или не притежават други опасни свойства (виж позиция А4090)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2130">
+                <xs:annotation>
+                    <xs:documentation>Битуминозни материали (асфалтови отпадъци) от пътно-строителни дейности и
+                        поддръжка, несъдържащи катран (1) (виж позиция A3200)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3010">
+                <xs:annotation>
+                    <xs:documentation>Твърди пластмасови отпадъци:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3020">
+                <xs:annotation>
+                    <xs:documentation>Хартия, картон и хартиени отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3030">
+                <xs:annotation>
+                    <xs:documentation>Текстилни отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3035">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от текстилни подови покрития, килими</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3040">
+                <xs:annotation>
+                    <xs:documentation>Каучукови отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3050">
+                <xs:annotation>
+                    <xs:documentation>Необработен корк и дървесни отпадъци:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3060">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от селскостопанска и хранително-вкусова промишленост, при условие че не
+                        са инфекциозни:
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3065">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от ядивни мазнини и масла от животински или растителен произход (например
+                        пържилни масла и мазнини), при условие че не проявяват свойствата от приложение III
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3070">
+                <xs:annotation>
+                    <xs:documentation>Следните отпадъци:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3080">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от изрезки и скрап от гума</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1030">
+                <xs:annotation>
+                    <xs:documentation>Труднотопими метали, съдържащи шлаки</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1031">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от метали и метални сплави в метална недисперсна форма (метален прах) от
+                        молибден, волфрам, титан, тантал, ниобий и рений, с изключение на такива отпадъци като
+                        посочените в списък A по позиция A1050, галванични утайки.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1040">
+                <xs:annotation>
+                    <xs:documentation>Скрап от възли и агрегати от инсталации за получаване на електроенергия,
+                        незамърсени със смазочни масла, РСВ или РСТ, които да ги превърнат в опасни отпадъци
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1050">
+                <xs:annotation>
+                    <xs:documentation>Смесени цветни метали, скрап от тежки фракции, несъдържащи съставките упоменати в
+                        приложение I в такава концентрация, че да проявят свойствата от приложение III (1)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1060">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от селен и телур в метална елементна форма, включително и прах
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1070">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от мед и медни сплави в дисперсна форма, освен ако съдържат съставките
+                        упоменати в приложение I в такава концентрация, че да проявят свойствата от приложение III
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1080">
+                <xs:annotation>
+                    <xs:documentation>Цинкова пепел и остатъци, включително остатъци от цинкови сплави, освен ако
+                        съдържат съставките упоменати в приложение I съставки в такава концентрация, че да проявят
+                        свойствата от приложение III или да проявяват опасните свойства H4.3 (2)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1090">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни батерии, отговарящи на съставена спецификация, с изключение на тези
+                        съдържащи олово, кадмий и живак
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1100">
+                <xs:annotation>
+                    <xs:documentation>Метал-съдържащи отпадъци, произхождащи от топене, претопяване и рафиниране на
+                        метали:
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1110">
+                <xs:annotation>
+                    <xs:documentation>Електрически и електронни модули:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1115">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от метални кабели, покрити или изолирани с пластмаси, невключени в списък
+                        A1190, с изключение на тези, предназначени за операции по приложение IVA или всякакви други
+                        операции по обезвреждане, включващи на всеки един етап неконтролирани термични процеси като
+                        открито горене
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1120">
+                <xs:annotation>
+                    <xs:documentation>Отработени катализатори, с изключение на разтвори използвани като катализатори,
+                        съдържащи:
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1130">
+                <xs:annotation>
+                    <xs:documentation>Пречистени отработени катализатори, съдържащи благородни метали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1140">
+                <xs:annotation>
+                    <xs:documentation>Твърди остатъци съдържащи благородни метали, със следи от неорганични цианиди
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1150">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от благородни метали и сплави (злато, сребро, платиновата група, с
+                        изключение на живак) в дисперсна, нетечна форма, със съответната опаковка и маркировка
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1160">
+                <xs:annotation>
+                    <xs:documentation>Пепел от благородни метали, получена при изгарянето на печатни платки (виж позиция
+                        А1150)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1170">
+                <xs:annotation>
+                    <xs:documentation>Пепел от благородни метали получена при изгарянето на фотографска лента
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1180">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчна фотографска лента, съдържаща сребърни халогениди и метализирано сребро
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1190">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчна фотографска хартия, съдържаща сребърни халогениди и метализирано
+                        сребро
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1200">
+                <xs:annotation>
+                    <xs:documentation>Гранулирана шлака, получена от производството на желязо и стомана
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1210">
+                <xs:annotation>
+                    <xs:documentation>Шлака получена от производството на желязо и стомана, включително шлаки като
+                        източник на титанов диоксид и ванадий
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1220">
+                <xs:annotation>
+                    <xs:documentation>Шлака от производството на цинк, химически стабилизирана, с високо съдържание на
+                        желязо (над 20 %) и произведена съгласно техническите спецификации (напр. DIN 4301) основно за
+                        строителство
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1230">
+                <xs:annotation>
+                    <xs:documentation>Метални окиси от горещо валцуване получени при производството на желязо и
+                        стомана
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1240">
+                <xs:annotation>
+                    <xs:documentation>Метални окиси от горещо валцуване получени при производството на желязо и
+                        стомана
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B1250">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от излезли от употреба моторни превозни средства, които не съдържат нито
+                        течности, нито други опасни компоненти
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2010">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от минно производство в недисперсна форма:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2020">
+                <xs:annotation>
+                    <xs:documentation>Стъклени отпадъци в недисперсна форма:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2030">
+                <xs:annotation>
+                    <xs:documentation>Керамични отпадъци в недисперсна форма:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2040">
+                <xs:annotation>
+                    <xs:documentation>Други отпадъци, съдържащи предимно неорганични съставки:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2050">
+                <xs:annotation>
+                    <xs:documentation>Летлива пепел от изгаряне на въглища в електроцентрали, невключени в списък А (виж
+                        позиция А2060)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2070">
+                <xs:annotation>
+                    <xs:documentation>Утайки от калциев флуорид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2080">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от калциев сулфат (гипс), получен от процеси в химическата промишленост,
+                        невключен в списък А (виж позиция А2040)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B2090">
+                <xs:annotation>
+                    <xs:documentation>Анодни остатъци от производството на стомана и алуминий направени от петролен кокс
+                        или битум и пречистени до общоприетите производствени стандарти (с изключение на анодни остатъци
+                        от хлор-алкална електролиза и от металургията)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3090">
+                <xs:annotation>
+                    <xs:documentation>Изрезки и други отпадъци от обработена кожа, или от смесена кожа, негодни за
+                        производството на кожени изделия, с изкл. на утайки от обработка на кожа, несъдържащи съединения
+                        на шествалентен хром и биоциди (виж позиция А3100)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3100">
+                <xs:annotation>
+                    <xs:documentation>Прах, пепел утайки или брашно от обработката на кожи, несъдържащи съединения на
+                        шествалентен хром и биоциди (виж позиция А3090)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3110">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от кожаро-кожухарството, не съдържащи съединения на шествалентен хром или
+                        биоциди или инфекциозни субстанции (виж позиция А3110)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3120">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, съдържащи оцветители за храни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3130">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от полимерни етери и отпадъци от неопасни мономерни етери, които не могат
+                        да образуват пероксиди
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B3140">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от пневматични гуми, с изключение на тези, предназначени за операциите,
+                        упоменати в приложение IVA
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B4010">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, съставени главно от водоразтворими бои/латекси, мастила, политури,
+                        несъдържащи органични разтворители, тежки метали или биоциди, до степен, която ги прави опасни
+                        (виж позиция А4070)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B4030">
+                <xs:annotation>
+                    <xs:documentation>Използвани фотоапарати за еднократна употреба, с батерии, невключени в списък A
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="B4020">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, приготвянето и употребата на смоли, латекс,
+                        уплътнители, лепила/адхезиви, неизброени в списък А, несъдържащи разтворители или други
+                        замърсители в такава концентрация, че да проявят свойствата от приложение нишесте...
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1010">
+                <xs:annotation>
+                    <xs:documentation>Метални отпадъци и отпадъци съдържащи сплави на следните метали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1020">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, съдържащи съставки (с изключение на метални отпадъци отлети блокове) или
+                        замърсени
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1030">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, съдържащи съставки или замърсени с:</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1040">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, съдържащи като съставки</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1050">
+                <xs:annotation>
+                    <xs:documentation>Галванични утайки</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1060">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни разтвори от байцване/ецване на метали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1070">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни разтвори от преработката на цинк, прах и утайки, като ярозит, хематит и
+                        др.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1080">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от цинкови остатъци, невключени в списък Б, съдържащи олово и кадмий в
+                        такава концентрация, че да проявяват свойствата от приложение III
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1090">
+                <xs:annotation>
+                    <xs:documentation>Пепели от изгаряне на изолирани медни проводници</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1100">
+                <xs:annotation>
+                    <xs:documentation>Прахове и остатъци от газоочистващи инсталации при леене на мед</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1110">
+                <xs:annotation>
+                    <xs:documentation>Употребявани електролитни разтвори от електролитна рафинация и електролитно
+                        получаване на мед
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1120">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни утайки от електролитна рафинация и електролитно получаване на мед
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1130">
+                <xs:annotation>
+                    <xs:documentation>Употребени разтвори от байцване/ецване, съдържащи разтворена мед
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1140">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от катализатори, съдържащи меден хлорид и меден цианид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1150">
+                <xs:annotation>
+                    <xs:documentation>Пепели от благородни метали от изгарянето на печатни платки, невключени в списък Б
+                        (1)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1160">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от оловно-кисели батерии и акумулатори, цели или раздробени
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A1170">
+                <xs:annotation>
+                    <xs:documentation>Несортирани отпадъци от батерии и акумулатори, с изключение на тези, включени като
+                        смесени в списък
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A2010">
+                <xs:annotation>
+                    <xs:documentation>Стъклени отпадъци от катодно-лъчеви тръби и други активирани стъкла
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A2020">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от неорганични флуорни съединения под формата на течности или утайки с
+                        изключение на отпадъците, специфицирани в списък Б
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A2030">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от катализатори, с изключение на отпадъците, специфицирани в списък Б
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A2040">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от калциев сулфат (гипс), получен от процеси в химическата промишленост,
+                        когато съдържа съставките упоменати в приложение I в такива концентрации, че да проявяват
+                        свойствата от приложение III (виж позиция В2080)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A2050">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от азбест (прах или влакна)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A2060">
+                <xs:annotation>
+                    <xs:documentation>Прах от изгарянето на въглища в електрически централи, когато съдържа съставките,
+                        упоменати в приложение I в такива концентрации, че да проявяват свойствата от приложение III
+                        (виж позиция В2050).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3010">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството и преработката на петролен кокс и битум
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3020">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни минерални масла, неподходящи за тяхното първоначално предназначение
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3030">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци, които съдържат, състоят се от или са замърсени с утайки от
+                        антидетонаторни съединения, съдържащи олово
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3040">
+                <xs:annotation>
+                    <xs:documentation>Отпадъчни топлоносители</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A3050">
+                <xs:annotation>
+                    <xs:documentation>Отпадъци от производството, приготвянето и употребата на смоли, латекси,
+                        уплътнители, лепила/адхезиви, без тези отпадъци специфицирани в списък Б (виж позиция В4020)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="baselConventionDanger">
+        <xs:annotation>
+            <!-- n_basel_convetion_danger -->
+            <xs:documentation>Базелска конвенция - опасни</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Н3">
+                <xs:annotation>
+                    <xs:documentation>точка на възпламеняване 55 °С</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н6">
+                <xs:annotation>
+                    <xs:documentation>едно или повече вещества, класифицирани (*i) като "силно токсични", с обща
+                        концентрация 0,1 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н6">
+                <xs:annotation>
+                    <xs:documentation>едно или повече вещества, класифицирани като "токсични", с обща концентрация 3 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н5">
+                <xs:annotation>
+                    <xs:documentation>едно или повече вещества, класифицирани като "вредни", с обща концентрация 25 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н8">
+                <xs:annotation>
+                    <xs:documentation>едно или повече "корозивни" вещества, класифицирани като R 35, с обща концентрация
+                        1 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н8">
+                <xs:annotation>
+                    <xs:documentation>едно или повече "корозивни" вещества, класифицирани като R 34, с обща концентрация
+                        5 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н4">
+                <xs:annotation>
+                    <xs:documentation>едно или повече "дразнещи" вещества, класифицирани като R 41, с обща концентрация
+                        10 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н4">
+                <xs:annotation>
+                    <xs:documentation>едно или повече "дразнещи" вещества, класифицирани като R 36, R 37 и/или R 38, с
+                        обща концентрация 20 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н7">
+                <xs:annotation>
+                    <xs:documentation>едно вещество, познато като "канцерогенно" от категории 1 или 2, с концентрация
+                        0,1 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н7">
+                <xs:annotation>
+                    <xs:documentation>едно вещество, познато като "канцерогенно" от категория 3, с концентрация 1 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н10">
+                <xs:annotation>
+                    <xs:documentation>едно вещество, "токсично за репродукцията" от категории 1 или 2, класифицирано
+                        като R 60 и/или R 61, с концентрация 0,5 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н10">
+                <xs:annotation>
+                    <xs:documentation>едно вещество, "токсично за репродукцията" от категория 3, класифицирано като R 62
+                        и/или R 63, с концентрация 5 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н11">
+                <xs:annotation>
+                    <xs:documentation>едно "мутагенно" вещество от категории 1 или 2, класифицирано като R 46, с
+                        концентрация 0,1 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Н11">
+                <xs:annotation>
+                    <xs:documentation>едно "мутагенно" вещество от категория 3, класифицирано като R 40, с концентрация
+                        1 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="H13">
+                <xs:annotation>
+                    <xs:documentation>едно "сенсибилизиращо" вещество, класифицирано като R 42 и/или R 43, с
+                        концентрация 10 %
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="wasteOpT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="T">
+                <xs:annotation>
+                    <xs:documentation>Транспортиране</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="wasteOpTrBr">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Trd">
+                <xs:annotation>
+                    <xs:documentation>Търговец</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Bro">
+                <xs:annotation>
+                    <xs:documentation>Брокер</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="wasteOpR">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="R02">
+                <xs:annotation>
+                    <xs:documentation>Пречистване или регенериране на разтворители</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R04">
+                <xs:annotation>
+                    <xs:documentation>Рециклиране или възстановяване на метали и метални съединения</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R05">
+                <xs:annotation>
+                    <xs:documentation>Рециклиране или възстановяване на други неорганични материали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R06">
+                <xs:annotation>
+                    <xs:documentation>Регенериране на киселини и основи</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R07">
+                <xs:annotation>
+                    <xs:documentation>Възстановяване на компоненти, използвани за намаляване на замърсяването
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R08">
+                <xs:annotation>
+                    <xs:documentation>Възстановяване на компоненти от катализатори</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R09">
+                <xs:annotation>
+                    <xs:documentation>Повторно рафиниране на масла или друга повторна употреба на масла
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R01">
+                <xs:annotation>
+                    <xs:documentation>Използването им като гориво или по друг начин за получаване на енергия
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R10">
+                <xs:annotation>
+                    <xs:documentation>Обработване на земната повърхност, благоприятстващо земеделието или подобряващо
+                        качествата на околната среда
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R11">
+                <xs:annotation>
+                    <xs:documentation>Използване на отпадъците, получени по някой от методите на оползотворяване R1 -
+                        R10
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R12">
+                <xs:annotation>
+                    <xs:documentation>Размяна на отпадъците за оползотворяване по който и да е от методите R1 - R11
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R13">
+                <xs:annotation>
+                    <xs:documentation>Съхраняване на отпадъци до извършване на която и да е от операциите R1 - R12,
+                        освен временното съхраняване до събирането им на мястото на образуване
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R03">
+                <xs:annotation>
+                    <xs:documentation>Рециклиране или възстановяване на органични вещества, които не са използвани като
+                        разтворители, включително чрез компостиране и други процеси на биологично превръщане
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="wasteOpD">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="D07">
+                <xs:annotation>
+                    <xs:documentation>Изхвърляне на отпадъци в морета и океани, в т.ч. инжектиране под морското дъно
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D08">
+                <xs:annotation>
+                    <xs:documentation>Биологично третиране, непосочено на друго място, при което се образуват крайни
+                        съединения или смеси, които се обезвреждат по някоя от операциите D1 - D12
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D10">
+                <xs:annotation>
+                    <xs:documentation>Наземно изгаряне (инсинерация)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11">
+                <xs:annotation>
+                    <xs:documentation>Изгаряне в море</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12">
+                <xs:annotation>
+                    <xs:documentation>Постоянно съхраняване (например съхраняване в контейнери в мини и други)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13">
+                <xs:annotation>
+                    <xs:documentation>Смесване преди предаване за обезвреждането им по някоя от операциите D1 - D12
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14">
+                <xs:annotation>
+                    <xs:documentation>Препакетиране преди предаването им за обезвреждане по която и да е от операциите
+                        D1 - D13
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D01">
+                <xs:annotation>
+                    <xs:documentation>Депониране (наземно или подземно)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D02">
+                <xs:annotation>
+                    <xs:documentation>Обработване на замърсени земя и почви (например биоразграждане на течности или
+                        утайки в почви)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D03">
+                <xs:annotation>
+                    <xs:documentation>Дълбочинно инжектиране (например инжектиране на отпадъци в кладенци, солни
+                        находища и естествени хранилища, които могат да бъдат изпомпвани)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D04">
+                <xs:annotation>
+                    <xs:documentation>Повърхностни заграждения (например съхраняване на течни отпадъци или утайки в
+                        изкопи, хвостохранилища, лагуни и други подобни съоръжения)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D05">
+                <xs:annotation>
+                    <xs:documentation>Специално проектирани депа (например депониране в отделни клетки, които са
+                        запечатани и изолирани помежду си и от околната среда)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D06">
+                <xs:annotation>
+                    <xs:documentation>Изхвърляне на отпадъци във водни обекти, с изключение на морета/океани
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D09">
+                <xs:annotation>
+                    <xs:documentation>Физико-химично третиране, неупоменато в друга операция по обезвреждане (например
+                        изпарение, сушене, калциниране, микровълнова обработка и други, при което се получават
+                        съединения или смеси, които се обезвреждат по която и да е от операциите D1 - D12
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15">
+                <xs:annotation>
+                    <xs:documentation>Съхраняване до извършване на която и да е от операциите по обезвреждане D1 - D14,
+                        освен временното съхраняване до събирането на отпадъците от мястото на образуването им
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="wasteOpRD">
+        <xs:union memberTypes="tns:wasteOpR tns:wasteOpD"/>
+    </xs:simpleType>
+    <xs:simpleType name="wasteOpRDTrBrT">
+        <xs:union memberTypes="tns:wasteOpR tns:wasteOpD tns:wasteOpTrBr tns:wasteOpT"/>
+    </xs:simpleType>
+    <xs:simpleType name="nubaDescAlkaline">
+        <xs:annotation>
+            <xs:documentation>Алкални</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Кадмий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Никел</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Стомана</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Пластмаси</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Хартия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>Битум</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>Калиева основа</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>Желязо</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>Метало-керамика</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nubaDescLead">
+        <xs:annotation>
+            <xs:documentation>Оловно-кисели</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Олово</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Оксидно-сулфатна фракция</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Полипропилен</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Други пластмаси</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Електролит</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nubaDescType">
+        <xs:union memberTypes="tns:nubaDescLead tns:nubaDescAlkaline"/>
+    </xs:simpleType>
+    <xs:simpleType name="nubaChemAutoType">
+        <xs:annotation>
+            <xs:documentation>Тип на НУБА в зависимост от химичния им състав - автомобилни</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>2.1 Оловно-кисели</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>2.2 Никелово-кадмиеви</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>2.3 Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nubaChemIndType">
+        <xs:annotation>
+            <xs:documentation>Тип на НУБА в зависимост от химичния им състав - индустриални</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>3.1 Със сребърен оксид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>3.2 Литиево-йонни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>3.3 Други с литий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>3.4 Въздушно-цинкови</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>3.5 Оловно-кисели</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>3.6 Никелово-кадмиеви</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>3.7 Никелово-железни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>3.8 Никелово-хидридни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>3.9 Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nubaChemPortType">
+        <xs:annotation>
+            <xs:documentation>Тип на НУБА в зависимост от химичния им състав - портативни</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>1.1 С манганов диоксид, алкални</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>1.2 С манганов диоксид, различни от алкалните</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>1.3 С живачен оксид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>1.4 Със сребърен оксид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>1.5 Литиево-йонни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>1.6 Други с литий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>1.7 Въздушно-цинкови</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>1.8 Никелово-кадмиеви</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>1.9 Оловно-кисели</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>1.10 Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nubaChemType">
+        <xs:annotation>
+            <xs:documentation>Тип на НУБА в зависимост от химичния им състав</xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="tns:nubaChemAutoType tns:nubaChemIndType tns:nubaChemPortType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="iumpsCategoryCsSt">
+        <xs:annotation>
+            <!-- Категории. Стойност 1 съответства на "чл. 2, ал. 1, т. 1", стойност 2 съответства на "чл. 2, ал. 1, т. 2", стойност 0 - стари данни.-->
+            <xs:documentation>Категории</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>чл. 2, ал. 1, т. 1</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>чл. 2, ал. 1, т. 2</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>стари данни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iumpsCategoryCs">
+        <xs:annotation>
+            <!-- Категории. Стойност 1 съответства на "чл. 2, ал. 1, т. 1", стойност 2 съответства на "чл. 2, ал. 1, т. 2", стойност 0 - стари данни.-->
+            <xs:documentation>Категории</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>чл. 2, ал. 1, т. 1</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>чл. 2, ал. 1, т. 2</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>стари данни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="camtOriginType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Общински системи за разделно събиране</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Търговски източници, генериращи отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Паркове и градини</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>Земеделие и/или горско стопанство</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ctBcWasteOrigin">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="А">
+                <xs:annotation>
+                    <xs:documentation>от системите за разделно събиране на отпадъци от опаковки</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Б">
+                <xs:annotation>
+                    <xs:documentation>от системите за разделно събиране на биоотпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="В">
+                <xs:annotation>
+                    <xs:documentation>от общински площадки за разделно събиране на отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Г">
+                <xs:annotation>
+                    <xs:documentation>от търговски обекти, производствени, стопански и административни сгради</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Д">
+                <xs:annotation>
+                    <xs:documentation>от общински системи за събиране на смесени битови отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Е">
+                <xs:annotation>
+                    <xs:documentation>от съоръжения за третиране на отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Ж">
+                <xs:annotation>
+                    <xs:documentation>от други системи за разделно събиране в т.ч. пунктове, съдове</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="З">
+                <xs:annotation>
+                    <xs:documentation>от системи за разделно събиране на отпадъци от хартия/картон, метали, стъкло и пластмаса</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="И">
+                <xs:annotation>
+                    <xs:documentation>от строителни обекти</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="camtProductKindType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Компост</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Ферментационен продукт</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Органичен почвен подобрител</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>Стабилизирана органична фракция от МБТ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="euKindType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="brok">
+                <xs:annotation>
+                    <xs:documentation>Брокер на отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="docu">
+                <xs:annotation>
+                    <xs:documentation>Документ по чл.35 ЗУО</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="face">
+                <xs:annotation>
+                    <xs:documentation>Лице при чиято дейност се образуват отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="trade">
+                <xs:annotation>
+                    <xs:documentation>Търговец на отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="depotArea">
+        <xs:annotation>
+            <xs:documentation>
+                Тип участък
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>
+                        Участък за опасни
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>
+                        Участък за не-опасни
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>
+                        Участък за инертни
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Тип получател -->
+    <xs:simpleType name="receiverType">
+        <xs:annotation>
+            <xs:documentation>
+                Тип получател
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>
+                        Юридическо лице / Едноличен търговец
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>
+                        Държава
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>
+                        Друга собствена площадка/инсталация
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>
+                        Натрупване с цел транспортиране с кораб или влак
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Тип подател -->
+    <xs:simpleType name="senderType">
+        <xs:restriction base="xs:string">
+            <!-- Юридическо лице / Едноличен търговец -->
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>
+                        Юридическо лице / Едноличен търговец
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <!--Физическо лице -->
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>
+                        Физическо лице
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="senderTBType">
+        <xs:annotation>
+            <xs:documentation>
+                Тип подател за търговци
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>
+                        Юридическо лице / Едноличен търговец
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>
+                        Държава
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>
+                        Натрупване с цел транспортиране с кораб или влак
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="senderCTSType">
+        <xs:annotation>
+            <xs:documentation>
+                Тип подател за събиране и транспортиране
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>
+                        Държава
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>
+                        Друга собствена площадка/инсталация
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>
+                        Юридическо лице / Едноличен търговец
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>
+                        Физическо лице
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="amountNonNegative">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9999999.999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="amountNonNegative15">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999999999999.999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="amountNonNegative15and4">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999999999.9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="countPercType">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99.99"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="amountNonNegativeWhole">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="amountPositive">
+        <xs:restriction base="tns:amountNonNegative">
+            <xs:minInclusive value="0.001"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="boolType">
+        <xs:restriction base="xs:decimal">
+            <!-- False -->
+            <xs:enumeration value="0"/>
+            <!-- True -->
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="boolCharType">
+        <xs:restriction base="xs:string">
+            <!-- False -->
+            <xs:enumeration value="1"/>
+            <!-- True -->
+            <xs:enumeration value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- ID на книгата -->
+    <xs:simpleType name="book_typeCollectType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="35">
+                <xs:annotation>
+                    <xs:documentation>Транспортиране</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="40">
+                <xs:annotation>
+                    <xs:documentation>Транспортиране метали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="36">
+                <xs:annotation>
+                    <xs:documentation>Съхранение</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="41">
+                <xs:annotation>
+                    <xs:documentation>Съхранение метали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="book_typeWasteType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="34">
+                <xs:annotation>
+                    <xs:documentation>Образувани отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="book_typeDepotType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="37">
+                <xs:annotation>
+                    <xs:documentation>Депа за отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="book_typeRDType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="38">
+                <xs:annotation>
+                    <xs:documentation>Оползотворяване</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="book_typeTraderType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="39">
+                <xs:annotation>
+                    <xs:documentation>Търговци и брокери</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="book_typeMercType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="70">
+                <xs:annotation>
+                    <xs:documentation>Съхранение-живак</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="71">
+                <xs:annotation>
+                    <xs:documentation>Преобразуване-живак</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Номер на площадка -->
+    <xs:simpleType name="stagenumType">
+        <xs:restriction base="xs:decimal">
+            <!-- ? -->
+            <xs:maxInclusive value="999999999999999"/>
+            <xs:fractionDigits value="0"/>
+            <xs:minInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="catNubaTypeAnexMps">
+        <xs:union memberTypes="tns:catNubaTypeLat tns:catIueeoTypeAnnex3 tns:iumpsCategoryCsSt"/>
+    </xs:simpleType>
+    <xs:simpleType name="catNubaTypeAnexMpsMet">
+        <xs:union memberTypes="tns:catNubaTypeLat tns:catIueeoTypeAnnex3 tns:iumpsCategoryCsSt tns:catMetPack"/>
+    </xs:simpleType>
+    <xs:simpleType name="originNubaTypeAnexMps">
+        <xs:union
+                memberTypes="tns:nubaChemAutoType tns:nubaChemIndType tns:nubaChemPortType tns:iueeoCatOriginType tns:iumpsCategoryRDSt"/>
+    </xs:simpleType>
+    <xs:simpleType name="originNubaTypeAnexMpsText">
+        <xs:union
+                memberTypes="tns:stringLength512 tns:nubaChemAutoType tns:nubaChemIndType tns:nubaChemPortType tns:iueeoCatOriginType tns:iumpsCategoryRDSt"/>
+    </xs:simpleType>
+    <xs:simpleType name="catMetPack">
+        <xs:annotation>
+            <!-- N_CAT_NUBA -->
+            <xs:documentation>Тип метална опаковка за кодове </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Черни метали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Алуминий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="catNubaTypeLat">
+        <xs:annotation>
+            <!-- N_CAT_NUBA -->
+            <xs:documentation>Категории Нуба</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A">
+                <xs:annotation>
+                    <xs:documentation>автомобилни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="I">
+                <xs:annotation>
+                    <xs:documentation>индустриални</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="P">
+                <xs:annotation>
+                    <xs:documentation>портативни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="catNubaType">
+        <xs:annotation>
+            <!-- N_CAT_NUBA -->
+            <xs:documentation>Категории Нуба</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="А">
+                <xs:annotation>
+                    <xs:documentation>автомобилни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="И">
+                <xs:annotation>
+                    <xs:documentation>индустриални</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="П">
+                <xs:annotation>
+                    <xs:documentation>портативни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="catIueeoTypeAnnex3">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>1. Топлообменно оборудване</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>2. Екрани, монитори и оборудване, част от което са екрани с повърхност, по-голяма
+                        от 100 cm2
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>3. Лампи</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>4а. Големи уреди (всеки от външните размери е над 50 cm), включително, но не
+                        само
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4б">
+                <xs:annotation>
+                    <xs:documentation>4б. Големи уреди (поне един от външните размери е над 50 cm)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>5. Малки уреди (нито един от външните размери не надвишава 50 cm), включително, но
+                        не само
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>6. Малко информационно-технологично и телекомуникационно оборудване (нито един от
+                        външните размери не надвишава 50 cm)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Код на дейност -->
+    <xs:simpleType name="opCodeType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="99"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IssuedType">
+        <xs:restriction base="xs:decimal">
+            <!-- Изнесени от пуснатите на пазара / Възстановена продуктова такса -->
+            <xs:enumeration value="1"/>
+            <!-- Деси така го иска, Илияна също -->
+            <!-- Пуснати на пазара -->
+            <xs:enumeration value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="QuarterType">
+        <xs:restriction base="xs:decimal">
+            <!-- Първо тримесичие (01.01 - 31.03) -->
+            <xs:enumeration value="1"/>
+            <!-- Второ тримесичие (01.04 - 30.06) -->
+            <xs:enumeration value="2"/>
+            <!-- Трето тримесичие (01.07 - 30.09) -->
+            <xs:enumeration value="3"/>
+            <!-- Четвърто тримесичие (01.10 - 31.12) -->
+            <xs:enumeration value="4"/>
+            <!-- Коригиращ отчет -->
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Вид на БА -->
+    <xs:simpleType name="NubaOriginType">
+        <xs:annotation>
+            <xs:documentation>Вид на БА</xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="tns:NubaOriginTypeA tns:NubaOriginTypeI tns:NubaOriginTypeP"/>
+    </xs:simpleType>
+    <xs:simpleType name="NubaOriginTypeA">
+        <xs:annotation>
+            <xs:documentation>Вид на БА</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="A">
+                <xs:annotation>
+                    <xs:documentation>автомобилни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NubaOriginTypeI">
+        <xs:annotation>
+            <xs:documentation>Вид на БА</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="I">
+                <xs:annotation>
+                    <xs:documentation>индустриални</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NubaOriginTypeP">
+        <xs:annotation>
+            <xs:documentation>Вид на БА</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="P">
+                <xs:annotation>
+                    <xs:documentation>портативни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NubaChemicals">
+        <xs:annotation>
+            <xs:documentation>Химичен състав</xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="tns:NubaChemicalsA tns:NubaChemicalsI tns:NubaChemicalsP"/>
+    </xs:simpleType>
+    <xs:simpleType name="NubaChemicalsA">
+        <xs:annotation>
+            <xs:documentation>Състав</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>2.1 Оловно-кисели</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>2.2 Никелово-кадмиеви</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>2.3 Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NubaChemicalsI">
+        <xs:annotation>
+            <xs:documentation>Състав</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>3.1 Със сребърен оксид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>3.2 Литиево-йонни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>3.3 Други с литий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>3.4 Въздушно-цинкови</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>3.5 Оловно-кисели</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>3.6 Никелово-кадмиеви</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>3.7 Никелово-железни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>3.8 Никелово-хидридни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>3.9 Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NubaChemicalsP">
+        <xs:annotation>
+            <xs:documentation>Състав</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>1.1 С манганов диоксид, алкални</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>1.2 С манганов диоксид, различни от алкалните</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>1.3 С живачен оксид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>1.4 Със сребърен оксид</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>1.5 Литиево-йонни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>1.6 Други с литий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>1.7 Въздушно-цинкови</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>1.8 Никелово-кадмиеви</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>1.9 Оловно-кисели</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>1.10 Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="physicalCondType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Твърдо</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Течно</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Газообразно</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Прахообразно</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Суспензия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>Утайка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>Емулсия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="generalCondType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Устойчив</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Разтворим</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Горим</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Миришеш</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Друг /опишете/</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="depotWateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="БО">
+                <xs:annotation>
+                    <xs:documentation>Битов</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ОО">
+                <xs:annotation>
+                    <xs:documentation>Опасен</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ПО">
+                <xs:annotation>
+                    <xs:documentation>Производствен</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СО">
+                <xs:annotation>
+                    <xs:documentation>Строителен</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CategoryIueeoType">
+        <xs:annotation>
+            <xs:documentation>
+                Категории ЕЕО
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Големи домакински уреди
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>
+                        Малки домакински уреди
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>
+                        Информационно-технологично и телекомуникационно оборудване
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>
+                        Потребителски уреди и фотоволтаични панели
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>
+                        Осветителни тела
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5a">
+                <xs:annotation>
+                    <xs:documentation>
+                        Газоразрядни лампи
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>
+                        Електрически и електронни инструменти (с изключение на големи единици стационарно промишлено
+                        оборудване)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation>
+                        Играчки, уреди за спорт и отдих
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation>
+                        Медицински изделия (с изключение на всички имплантирани и замърсени продукти)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation>
+                        Инструменти за мониторинг и контрол
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>
+                        Автомати
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PurposeIueeoType">
+        <xs:annotation>
+            <xs:documentation>
+                Предназначение ЕЕО
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>
+                        за бита
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>
+                        извън бита
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodeTiresType">
+        <xs:annotation>
+            <xs:documentation>
+                Код на гумите
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="11">
+                <xs:annotation>
+                    <xs:documentation>
+                        нови гуми до 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="21">
+                <xs:annotation>
+                    <xs:documentation>
+                        нови гуми над 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12">
+                <xs:annotation>
+                    <xs:documentation>
+                        регенерирани гуми до 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="22">
+                <xs:annotation>
+                    <xs:documentation>
+                        регенерирани гуми над 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13">
+                <xs:annotation>
+                    <xs:documentation>
+                        гуми втора употреба до 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="23">
+                <xs:annotation>
+                    <xs:documentation>
+                        гуми втора употреба над 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14">
+                <xs:annotation>
+                    <xs:documentation>
+                        гумени вериги до 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="24">
+                <xs:annotation>
+                    <xs:documentation>
+                        гумени вериги над 20 кг.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="yearType">
+        <xs:restriction base="xs:decimal">
+            <xs:pattern value="[0-9]{4}"/>
+            <xs:fractionDigits value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodeOilType">
+        <xs:annotation>
+            <xs:documentation>
+                Код на маслата
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="001">
+                <xs:annotation>
+                    <xs:documentation>
+                        Моторни - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="002">
+                <xs:annotation>
+                    <xs:documentation>
+                        Компресорни - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="003">
+                <xs:annotation>
+                    <xs:documentation>
+                        Турбинни - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="004">
+                <xs:annotation>
+                    <xs:documentation>
+                        Течности за хидравлични трансмисии - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="005">
+                <xs:annotation>
+                    <xs:documentation>
+                        Масла за зъбни предавки - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="006">
+                <xs:annotation>
+                    <xs:documentation>
+                        Масла за обработка на метали - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="007">
+                <xs:annotation>
+                    <xs:documentation>
+                        Формовъчни масла - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="008">
+                <xs:annotation>
+                    <xs:documentation>
+                        Антикорозионни масла - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="009">
+                <xs:annotation>
+                    <xs:documentation>
+                        Електроизолационни масла - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="010">
+                <xs:annotation>
+                    <xs:documentation>
+                        Смазочни - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="011">
+                <xs:annotation>
+                    <xs:documentation>
+                        Смазочни - охлаждащи течности - минерални
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="012">
+                <xs:annotation>
+                    <xs:documentation>
+                        Моторни - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="013">
+                <xs:annotation>
+                    <xs:documentation>
+                        Компресорни - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="014">
+                <xs:annotation>
+                    <xs:documentation>
+                        Турбинни - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="015">
+                <xs:annotation>
+                    <xs:documentation>
+                        Течности за хидравлични трансмисии - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="016">
+                <xs:annotation>
+                    <xs:documentation>
+                        Масла за зъбни предавки - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="017">
+                <xs:annotation>
+                    <xs:documentation>
+                        Масла за обработка на метали - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="018">
+                <xs:annotation>
+                    <xs:documentation>
+                        Формовъчни масла - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="019">
+                <xs:annotation>
+                    <xs:documentation>
+                        Антикорозионни масла - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="020">
+                <xs:annotation>
+                    <xs:documentation>
+                        Електроизолационни масла - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="021">
+                <xs:annotation>
+                    <xs:documentation>
+                        Смазочни - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="022">
+                <xs:annotation>
+                    <xs:documentation>
+                        Смазочно-охлаждащи течности - синтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="023">
+                <xs:annotation>
+                    <xs:documentation>
+                        Моторни - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="024">
+                <xs:annotation>
+                    <xs:documentation>
+                        Компресорни - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="025">
+                <xs:annotation>
+                    <xs:documentation>
+                        Турбинни - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="026">
+                <xs:annotation>
+                    <xs:documentation>
+                        Течности за хидравлични трансмисии - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="027">
+                <xs:annotation>
+                    <xs:documentation>
+                        Масла за зъбни предавки - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="028">
+                <xs:annotation>
+                    <xs:documentation>
+                        Масла за обработка на метали - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="029">
+                <xs:annotation>
+                    <xs:documentation>
+                        Формовъчни масла - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="030">
+                <xs:annotation>
+                    <xs:documentation>
+                        Антикорозионни масла - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="031">
+                <xs:annotation>
+                    <xs:documentation>
+                        Електроизолационни масла - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="032">
+                <xs:annotation>
+                    <xs:documentation>
+                        Смазочни - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="033">
+                <xs:annotation>
+                    <xs:documentation>
+                        Смазочно-охлаждащи течности - полусинтетични
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodeMpsType">
+        <xs:annotation>
+            <xs:documentation>
+                категория на МПС
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="L">
+                <xs:annotation>
+                    <xs:documentation>Мотопеди и мотоциклети, както и МПС за пресечени местности (всъдеходи) и други
+                        малки три- и четириколесни превозни средства.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="M1">
+                <xs:annotation>
+                    <xs:documentation>Моторните превозни средства за превоз на пътници, в които броят на Местата за
+                        сядане, без мястото на водача, е не повече от 8.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="M2">
+                <xs:annotation>
+                    <xs:documentation>Моторните превозни средства за превоз на пътници с повече от 8 места за сядане,
+                        без мястото на водача, с технически допустима максимална маса не повече от 5 тона.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="M3">
+                <xs:annotation>
+                    <xs:documentation>Моторните превозни средства за превоз на пътници с повече от 8 места за сядане,
+                        без мястото на водача, с технически допустима максимална маса над 5 т.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="N1">
+                <xs:annotation>
+                    <xs:documentation>Моторните превозни средства, предназначени за превоз на товари, с технически
+                        допустима максимална маса не повече от 3,5 т.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="N2">
+                <xs:annotation>
+                    <xs:documentation>Моторните превозни средства, предназначени за превоз на товари, с технически
+                        допустима максимална маса над 3,5 т, но не повече от 12 т.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="N3">
+                <xs:annotation>
+                    <xs:documentation>Моторните превозни средства, предназначени за превоз на товари, с технически
+                        допустима максимална маса над 12 т.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Тип лице -->
+    <xs:simpleType name="PersonType">
+        <xs:restriction base="xs:string">
+            <!-- Лице от публичните регистри -->
+            <xs:enumeration value="01"/>
+            <!-- Държава -->
+            <xs:enumeration value="02"/>
+            <!-- Друга собствена площадка/инсталация -->
+            <xs:enumeration value="03"/>
+            <!-- Юридическо лице / Едноличен търговец -->
+            <xs:enumeration value="04"/>
+            <!-- Физическо лице -->
+            <xs:enumeration value="05"/>
+            <!-- Площадка ОЧЦМ -->
+            <xs:enumeration value="06"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Произход -->
+    <xs:simpleType name="ReasonOriginType">
+        <xs:restriction base="xs:string">
+            <!-- 1.От бита -->
+            <xs:enumeration value="1"/>
+            <!-- 2.Извън бита -->
+            <xs:enumeration value="2"/>
+            <!-- 3.Лице ИДС -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ReasonOriginDecType">
+        <xs:restriction base="xs:string">
+            <!-- 1.От бита -->
+            <xs:enumeration value="01"/>
+            <!-- 2.Извън бита -->
+            <xs:enumeration value="02"/>
+            <!-- 3.Лице ИДС -->
+            <xs:enumeration value="03"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RdcmOriginType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>от извършване на строителни и монтажни работи</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>от премахване на строежи</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="percentage">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+            <xs:maxInclusive value="999.999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="eknmType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="distEknmType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}[0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="amountDeciGramNonNegative">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="5"/>
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CountNonNegative">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999999999999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CountNonNegative5">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="OpIdType">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CountNonNegative6">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CountNonNegative8">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CountNonNegative10">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="0"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9999999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ReportInOutType">
+        <xs:restriction base="xs:decimal">
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>Предадени</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Приети</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DISPPersType">
+        <xs:annotation>
+            <xs:documentation>Годишен отчет за оползотворяване/обезвреждане на отпадъци от дървени опаковки - Вид на
+                отпадъчния материал
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="a">
+                <xs:annotation>
+                    <xs:documentation>За Приложение № 19a</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="b">
+                <xs:annotation>
+                    <xs:documentation>За Приложение № 19б</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="c">
+                <xs:annotation>
+                    <xs:documentation>За Приложение № 19в</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="d">
+                <xs:annotation>
+                    <xs:documentation>За Приложение № 19г</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="e">
+                <xs:annotation>
+                    <xs:documentation>За Приложение № 19д</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="f">
+                <xs:annotation>
+                    <xs:documentation>За Приложение № 19е</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DISPAType">
+        <xs:annotation>
+            <xs:documentation>Годишен отчет за оползотворяване/обезвреждане на отпадъци от стъклени опаковки - Вид на
+                отпадъка
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Безцветно стъкло</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Зелено стъкло</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Кафяво стъкло</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Цветно стъкло</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Смесено стъкло</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>В т.ч. За опаковане на опасни химични вещества</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DISPBType">
+        <xs:annotation>
+            <xs:documentation>Годишен отчет за оползотворяване/обезвреждане на отпадъци от хартиени и картонени опаковки
+                - Видове отпадъчна хартия
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Смесена хартия и картон,сортирани</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Хартия и картон от супермаркетите</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Вълнообразни картони</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Крафт торби</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Други видове</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>В т.ч. За опаковане на опасни химични вещества</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DISPCType">
+        <xs:annotation>
+            <xs:documentation>Годишен отчет за оползотворяване/обезвреждане на отпадъци от метални опаковки - Вид на
+                отпадъка
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Стомана</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Алуминий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>в т.ч. за опаковане на опасни химични вещества</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DISPDType">
+        <xs:annotation>
+            <xs:documentation>Годишен отчет за оползотворяване/обезвреждане на отпадъци от пластмасови опаковки - Вид
+                пластмаса
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>LDPE</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>HDPE</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>PP</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>PE/PP смесени</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>PET</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>PVC</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>PS други пластмаси</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>Смесени пластмаси</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>в т.ч. за опаковане на опасни химични вещества</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DISPEType">
+        <xs:annotation>
+            <xs:documentation>Годишен отчет за оползотворяване/обезвреждане на отпадъци от дървени опаковки - Вид на
+                отпадъчния материал
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Дърво</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Корк</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>в т.ч. за опаковане на опасни химични вещества</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DISPFType">
+        <xs:annotation>
+            <xs:documentation>Годишен отчет за оползотворяване/обезвреждане на отпадъци от композитни опаковки и/или
+                опаковки от други опаковъчни материали - Вид на отпадъчния материал
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Опаковъчни картони за течности</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Предимно от пластмаса</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>Предимно от картон</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>Предимно от бяла ламарина</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>Предимно от алуминий</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>Други композитни материали PVC /алуминий/</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>текстил, керамика, порцелан и др.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>Общо други опаковъчни материали</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>в т.ч. за опаковане на опасни химични вещества</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iueeoMarkedType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>маркирано</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>немаркирано</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iueeoOriginType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>за бита</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>извън бита</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iueeoCatOriginType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1.1">
+                <xs:annotation>
+                    <xs:documentation>произход от бита и наличие на маркировка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="1.2">
+                <xs:annotation>
+                    <xs:documentation>произход от бита и липса на маркировка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2.1">
+                <xs:annotation>
+                    <xs:documentation>произход извън бита и наличие на маркировка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2.2">
+                <xs:annotation>
+                    <xs:documentation>произход извън бита и липса на маркировка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iueeoHandedForType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>транспортиране</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>търговец и/или брокер на отпадъци</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+                <xs:annotation>
+                    <xs:documentation>рециклиране</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="04">
+                <xs:annotation>
+                    <xs:documentation>оползотворяване, различно от рециклирането</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="05">
+                <xs:annotation>
+                    <xs:documentation>изгаряне с оползотворяване на енергия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="06">
+                <xs:annotation>
+                    <xs:documentation>повторна употреба</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="07">
+                <xs:annotation>
+                    <xs:documentation>обезвреждане</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="08">
+                <xs:annotation>
+                    <xs:documentation>изнесен или изпратен за рециклиране</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="09">
+                <xs:annotation>
+                    <xs:documentation>изнесен или изпратен за оползотворяване, различно от рециклирането
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation>изнесен или изпратен за обезвреждане</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iumpsReasonRD">
+        <xs:restriction base="xs:decimal">
+            <xs:annotation>
+                <xs:documentation>Цели</xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>чл. 8, ал. 2, т. 1 и 2</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>чл. 8, ал. 2, т. 3 и 4</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>чл. 8, ал. 2, т. 3 и 5</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>стари данни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iumpsCategoryRDSt">
+        <xs:restriction base="xs:string">
+            <xs:annotation>
+                <xs:documentation>Категории</xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>L, M1 и N1 по чл. 2, ал. 1, т. 1 от НИУМПС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>M2 и M3 по чл. 2, ал. 1, т. 2 от НИУМПС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>N2 и N3 по чл. 2, ал. 1, т. 2 от НИУМПС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>стари данни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="iumpsCategoryRD">
+        <xs:restriction base="xs:decimal">
+            <xs:annotation>
+                <xs:documentation>Категории</xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>L, M1 и N1 по чл. 2, ал. 1, т. 1 от НИУМПС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>M2 и M3 по чл. 2, ал. 1, т. 2 от НИУМПС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>N2 и N3 по чл. 2, ал. 1, т. 2 от НИУМПС</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>стари данни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="oilOthType">
+        <xs:restriction base="xs:string">
+            <xs:annotation>
+                <xs:documentation>Получени продукти, в резултат на третирането</xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="01">
+                <xs:annotation>
+                    <xs:documentation>Базови масла</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+                <xs:annotation>
+                    <xs:documentation>Други</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nubaKindType">
+        <xs:restriction base="xs:string">
+            <xs:annotation>
+                <xs:documentation>Вид на НУБА</xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="A">
+                <xs:annotation>
+                    <xs:documentation>автомобилни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="I">
+                <xs:annotation>
+                    <xs:documentation>индустриални</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="P">
+                <xs:annotation>
+                    <xs:documentation>портативни</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nubaTypeType">
+        <xs:restriction base="xs:string">
+            <xs:annotation>
+                <xs:documentation>Вид на НУБА</xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="al">
+                <xs:annotation>
+                    <xs:documentation>алкални НУБА</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="la">
+                <xs:annotation>
+                    <xs:documentation>оловно-кисели НУБА</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="oth">
+                <xs:annotation>
+                    <xs:documentation>други НУБА</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EikType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="13"/>
+            <xs:pattern value="[\d]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength2000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength120">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="120"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength6">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength100">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength13">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="13"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength128">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength20">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength10">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength2048">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="2048"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength4000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength255">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength2">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength1">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength3076">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="3076"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength512">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="512"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength256">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="256"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength5">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength1536">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1536"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength50">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength1024">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="1024"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength1100">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength23">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="23"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength30">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="stringLength500">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="500"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

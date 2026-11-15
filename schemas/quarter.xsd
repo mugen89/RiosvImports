@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://niso.tlogica.com/quarter.xsd"
+         	xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+					xmlns:cm="http://niso.tlogica.com/common-types.xsd"
+         	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         	targetNamespace="http://niso.tlogica.com/quarter.xsd"
+         	elementFormDefault="qualified">
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
+		schemaLocation="xmldsig-core-schema.xsd"/>
+	<xs:import namespace="http://niso.tlogica.com/common-types.xsd" schemaLocation="common-types.xsd"/>
+	<xs:import namespace="http://niso.tlogica.com/ewc.xsd" schemaLocation="ewc.xsd"/>
+	<xs:element name="reports">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- Данни за тримесечните отчети за Батерии и акумулатори (Приложение № 5, към чл.58, ал.1) -->
+				<xs:element name="r_qt_nuba"
+          					type="tns:r_qt_nubaType"
+          					minOccurs="0"
+          					maxOccurs="unbounded"/>
+				<!-- Данни за тримесечните отчети за Електрическо и електронно оборудване (Приложение № 11, към чл.51, ал.1) -->
+				<xs:element name="r_qt_iueeo"
+          					type="tns:r_qt_iueeoType"
+          					minOccurs="0"
+          					maxOccurs="unbounded"/>
+				<!-- Данни за тримесечните отчети за Гуми (Приложение № 2, към чл.33, ал.1) -->
+				<xs:element name="r_qt_tyres"
+          					type="tns:r_qt_tyresType"
+          					minOccurs="0"
+          					maxOccurs="unbounded"/>
+				<!-- Данни за тримесечните отчети за Масла (Приложение № 1, към чл.44, ал.1) -->
+				<xs:element name="r_qt_oil"
+          					type="tns:r_qt_oilType"
+          					minOccurs="0"
+          					maxOccurs="unbounded"/>
+				<xs:element name="r_qt_mps"
+										type="tns:r_qt_mpsType"
+										minOccurs="0"
+										maxOccurs="unbounded"/>
+				<!-- КЕП -->
+				<xs:element minOccurs="1"
+          					maxOccurs="1"
+          					ref="dsig:Signature"/>
+			</xs:sequence>
+			<!-- Година -->
+			<xs:attribute name="year"
+				type="cm:yearType"
+				use="required"/>
+			<!-- Тримесечие -->
+			<xs:attribute name="quarter"
+				type="cm:QuarterType"
+				use="required"/>
+			<!-- ЕИК -->
+			<xs:attribute name="eik"
+				type="cm:EikType"
+				use="required"/>
+			<!-- Тип на импорта -->
+			<xs:attribute name="type"
+				type="cm:ImportType"
+				use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Данни за тримесечните отчети за Батерии и акумулатори (Приложение № 5, към чл.58, ал.1) -->
+	<xs:complexType name="r_qt_nubaType">
+		<xs:sequence minOccurs="1"
+           			maxOccurs="1">
+			<xs:element name="r_qt_nuba_issued_exported"
+          				minOccurs="0"
+          				maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence minOccurs="1"
+           						maxOccurs="1">
+						<xs:element name="item"
+          							type="tns:r_qt_nuba_issued_exportedType"
+          							minOccurs="1"
+          							maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<!-- Година -->
+
+	</xs:complexType>
+	<!-- Данни за тримесечните отчети за Батерии и акумулатори (Приложение № 5, към чл.58, ал.1) – Таблица „Пуснати на пазара/Изнесени от пуснатите на пазара“ -->
+	<xs:complexType name="r_qt_nuba_issued_exportedType">
+		<!-- Дали записа е свързан с „Пуснати на пазара“ или „Изнесени от пуснатите на пазара“ -->
+		<xs:attribute name="is_issued"
+            			type="cm:IssuedType"
+            			use="required"/>
+		<!-- Име на юридическо лице -->
+		<xs:attribute name="name"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- ЕИК -->
+		<xs:attribute name="pin"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- Вид на БА -->
+		<xs:attribute name="origin"
+            			type="cm:NubaOriginType"
+            			use="required"/>
+		<!-- Химичен състав -->
+		<xs:attribute name="chemical"
+            			type="cm:NubaChemicals"
+            			use="required"/>
+		<!-- Количество, брой -->
+		<xs:attribute name="count"
+            			type="cm:CountNonNegative10"/>
+		<!-- Количество, кг -->
+		<xs:attribute name="amount_kg"
+            			type="cm:amountNonNegative"/>
+	</xs:complexType>
+	<!-- Данни за тримесечните отчети за Електрическо и електронно оборудване (Приложение № 11, към чл.51, ал.1) -->
+	<xs:complexType name="r_qt_iueeoType">
+		<xs:sequence minOccurs="1"
+           			maxOccurs="1">
+			<xs:element name="r_qt_iueeo_issued_exported"
+          				minOccurs="0"
+          				maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence minOccurs="1"
+           						maxOccurs="1">
+						<xs:element name="item"
+          							type="tns:r_qt_iueeo_issued_exportedType"
+          							minOccurs="1"
+          							maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Данни за тримесечните отчети за Електрическо и електронно оборудване (Приложение № 11, към чл.51, ал.1) – Таблица „Пуснати на пазара/Изнесени от пуснатите на пазара“ -->
+	<xs:complexType name="r_qt_iueeo_issued_exportedType">
+		<!-- Дали записа е свързан с „Пуснати на пазара“ или „Изнесени от пуснатите на пазара“ -->
+		<xs:attribute name="is_issued"
+            			type="cm:IssuedType"
+            			use="required"/>
+		<!-- Име на юридическото лице -->
+		<xs:attribute name="name"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- ЕИК -->
+		<xs:attribute name="pin"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- Предназначение -->
+		<xs:attribute name="purpose"
+            			type="cm:PurposeIueeoType"
+            			use="required"/>
+		<!-- Категории ЕЕО -->
+		<xs:attribute name="category"
+            			type="cm:CategoryIueeoType"
+            			use="required"/>
+		<!-- Количество, кг -->
+		<xs:attribute name="amount_kg"
+            			type="cm:amountNonNegative"
+            			use="required"/>
+	</xs:complexType>
+	<!-- Данни за тримесечните отчети за Гуми (Приложение № 2, към чл.33, ал.1) -->
+	<xs:complexType name="r_qt_tyresType">
+		<xs:sequence minOccurs="1"
+           			maxOccurs="1">
+			<xs:element name="r_qt_tyres_issued_exported"
+          				minOccurs="0"
+          				maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence minOccurs="1"
+           						maxOccurs="1">
+						<xs:element name="item"
+          							type="tns:r_qt_tyres_issued_exportedType"
+          							minOccurs="1"
+          							maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Данни за тримесечните отчети за Гуми (Приложение № 2, към чл.33, ал.1) – Таблица „Пуснати на пазара/изнесени количество“ -->
+	<xs:complexType name="r_qt_tyres_issued_exportedType">
+		<!-- Дали записа е свързан с „Пуснати на пазара“ или „Изнесени от пуснатите на пазара“ -->
+		<xs:attribute name="is_issued"
+            			type="cm:IssuedType"
+            			use="required"/>
+		<!-- Име на юридическото лице -->
+		<xs:attribute name="name"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- ЕИК -->
+		<xs:attribute name="pin"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- Код на гумите -->
+		<xs:attribute name="code"
+            			type="cm:CodeTiresType"
+            			use="required"/>
+		<!-- Количество, кг -->
+		<xs:attribute name="amount_kg"
+            			type="cm:amountNonNegative"
+            			use="required"/>
+	</xs:complexType>
+	<!-- Данни за тримесечните отчети за Масла (Приложение № 1, към чл.44, ал.1) -->
+	<xs:complexType name="r_qt_oilType">
+		<xs:sequence minOccurs="1"
+           			maxOccurs="1">
+			<xs:element name="r_qt_oil_issued_exported"
+          				minOccurs="0"
+          				maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence minOccurs="1"
+           						maxOccurs="1">
+						<xs:element name="item"
+          							type="tns:r_qt_oil_issued_exportedType"
+          							minOccurs="1"
+          							maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Данни за тримесечните отчети за Масла (Приложение № 1, към чл.44, ал.1) -->
+	<xs:complexType name="r_qt_oil_issued_exportedType">
+		<!-- Дали записа е свързан с „Пуснати на пазара“ или „Възстановена продуктова такса“ -->
+		<xs:attribute name="is_issued"
+            			type="cm:IssuedType"
+            			use="required"/>
+		<!-- Име на юридическото лице -->
+		<xs:attribute name="name"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- ЕИК -->
+		<xs:attribute name="pin"
+            			type="cm:stringLength500"
+            			use="required"/>
+		<!-- Код на маслата -->
+		<xs:attribute name="code"
+            			type="cm:CodeOilType"
+            			use="required"/>
+		<!-- Количество, кг -->
+		<xs:attribute name="amount_kg"
+            			type="cm:amountNonNegative"/>
+	</xs:complexType>
+	<xs:complexType name="r_qt_mpsType">
+		<xs:sequence minOccurs="1"
+			maxOccurs="1">
+			<xs:element name="r_qt_mps_issued_exported"
+				minOccurs="0"
+				maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence minOccurs="1"
+						maxOccurs="1">
+						<xs:element name="item"
+							type="tns:r_qt_mps_issued_exportedType"
+							minOccurs="1"
+							maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Данни за три месечните отчети за МПС (Приложение №5, към чл.33, ал.1) -->
+	<xs:complexType name="r_qt_mps_issued_exportedType">
+		<!-- Дали записа е свързан с „Пуснати на пазара“ или „Възстановена продуктова такса“ -->
+		<xs:attribute name="is_issued"
+									type="cm:IssuedType"
+									use="required"/>
+		<!-- Име на юридическото лице -->
+		<xs:attribute name="name"
+									type="cm:stringLength500"
+									use="required"/>
+		<!-- ЕИК -->
+		<xs:attribute name="pin"
+									type="cm:stringLength500"
+									use="required"/>
+		<!-- Код на маслата -->
+		<xs:attribute name="code"
+									type="cm:CodeMpsType"
+									use="required"/>
+		<!-- Количество, кг -->
+		<xs:attribute name="amount_ton"
+									type="cm:amountNonNegative"
+									use="required"/>
+		<!-- Година на първа регистрация -->
+		<xs:attribute name="first_reg_year"
+									type="cm:yearType"
+									use="required"/>
+		<!-- Количество, брой -->
+		<xs:attribute name="count"
+									type="cm:CountNonNegative10"
+									use="required"/>
+	</xs:complexType>
+</xs:schema>

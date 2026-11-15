@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://niso.tlogica.com/book.xsd"
+           xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+           xmlns:cm="http://niso.tlogica.com/common-types.xsd"
+           xmlns:ewc="http://niso.tlogica.com/ewc.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://niso.tlogica.com/book.xsd"
+           elementFormDefault="qualified">
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
+               schemaLocation="xmldsig-core-schema.xsd"/>
+    <xs:import namespace="http://niso.tlogica.com/common-types.xsd" schemaLocation="common-types.xsd"/>
+    <xs:import namespace="http://niso.tlogica.com/ewc.xsd" schemaLocation="ewc.xsd"/>
+    <xs:element name="reports">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Отчетна книга за образувани производствени и/или опасни отпадъци - част едно образуван отпадък -->
+                <xs:element name="r_b_generated_waste"
+                            type="tns:r_b_generated_wasteType"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <xs:element name="r_b_generated_waste_handed"
+                            type="tns:r_b_generated_waste_handedType"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <!-- Отчетна книга за депа за отпадъци -->
+                <xs:element name="r_b_depot"
+                            type="tns:r_b_depotType"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <!-- Отчетна книга за търговците или брокерите на отпадъци -->
+                <xs:element name="r_b_traders"
+                            type="tns:r_b_tradersType"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <!-- Отчетна книга за събиране и транспортиране или за събиране или съхранение на отпадъци -->
+                <xs:element name="r_b_collect_stortrans"
+                            type="tns:r_b_collect_stortransType"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <!-- Отчетна книга за оползотворяване и/или обезвреждане на отпадъци -->
+                <xs:element name="r_b_recovery_dispose"
+                            type="tns:r_b_recovery_disposeType"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <!-- Отчетна книга за временно съхраняване на отпадъци от живак -->
+                <xs:element name="r_b_merc_depot"
+                            type="tns:r_b_merc_depotType"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+                <!-- КЕП -->
+                <xs:element minOccurs="1"
+                            maxOccurs="1"
+                            ref="dsig:Signature"/>
+            </xs:sequence>
+            <!-- Година -->
+            <xs:attribute name="year"
+                          type="cm:yearType"
+                          use="required"/>
+            <!-- Тримесечие -->
+            <xs:attribute name="quarter"
+                          type="cm:QuarterType"
+                          use="required"/>
+            <!-- ЕИК -->
+            <xs:attribute name="eik"
+                          type="cm:EikType"
+                          use="required"/>
+            <!-- Тип на импорта -->
+            <xs:attribute name="type"
+                          type="cm:ImportType"
+                          use="required"/>
+            <!-- Начален период на данните -->
+            <xs:attribute name="period_start"
+                          type="xs:date"
+                          use="required"/>
+            <!-- Краен период на данните -->
+            <xs:attribute name="period_end"
+                          type="xs:date"
+                          use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- Отчетна книга за образувани производствени и/или опасни отпадъци -->
+    <xs:complexType name="r_b_generated_wasteType">
+        <xs:sequence minOccurs="1"
+                     maxOccurs="1">
+            <!-- Други бележки -->
+            <xs:element name="r_b_notes"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_notesWasteType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!--Дата на записа-->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Количество образуван отпадък (в тонове)-->
+        <xs:attribute name="amount_ton_generated"
+                      type="cm:amountNonNegative"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_generated_waste_handedType">
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!--Дата на записа-->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Тип на получателя !!!-->
+        <xs:attribute name="type_receiver_code"
+                      type="cm:receiverType"
+                      use="required"></xs:attribute>
+        <!-- Име на получателя-->
+        <xs:attribute name="receiver_name"
+                      type="cm:stringLength500"
+                      use="required"></xs:attribute>
+        <!-- ЕИК на получателя -->
+        <xs:attribute name="receiver_pin_name"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- номер на документа / основание за предване-->
+        <xs:attribute name="doc_num_grounds"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- Количество предаден отпадък (в тонове)-->
+        <xs:attribute name="amount_ton_handed_over"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+        <!-- Номер на документ за опасни отпадъци -->
+        <xs:attribute name="doc_id_num"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- Дата на документ за опасни отпадъци -->
+        <xs:attribute name="doc_id_date"
+                      type="xs:date"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_depotType">
+        <xs:sequence minOccurs="1"
+                     maxOccurs="1">
+            <!-- Други бележки -->
+            <xs:element name="r_b_notes"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_notesDepotType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Частта за запръстяване -->
+            <xs:element name="r_b_depot_soiling"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_depot_soilingType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Частта за получен отпадък -->
+            <xs:element name="r_b_depot_recv_waste"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_depot_recv_wasteType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <!-- Номер на площадка -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!--		<xs:attribute name="depot_type"-->
+        <!--									type="xs:decimal"-->
+        <!--									use="required"> </xs:attribute>-->
+        <!--		<xs:attribute name="depot_class"-->
+        <!--									type="xs:decimal"-->
+        <!--									use="required"> </xs:attribute>-->
+    </xs:complexType>
+    <xs:complexType name="r_b_depot_recv_wasteType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Тип получател -->
+        <xs:attribute name="type_receiver_code"
+                      type="cm:receiverType"
+                      use="required"></xs:attribute>
+        <!-- Име на получателя-->
+        <xs:attribute name="receiver_name"
+                      type="cm:stringLength500"
+                      use="required"></xs:attribute>
+        <!-- ЕИК на получателя-->
+        <xs:attribute name="receiver_pin_name"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- Основание за притежаване -->
+        <xs:attribute name="doc_num_grounds"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- Номер на документ при опасни отпадъци-->
+        <xs:attribute name="doc_id_num"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- Дата на документ при опасни отпадъци -->
+        <xs:attribute name="doc_id_date"
+                      type="xs:date"></xs:attribute>
+        <!-- Код на отпадъка -->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- Приключила процедура за основно охарактеризиране 0-НЕ, 1-Да-->
+        <xs:attribute name="ended_procedure"
+                      type="cm:boolType"
+                      use="required"></xs:attribute>
+        <!-- Количестви (тон) -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+        <!-- Клетка -->
+        <xs:attribute name="ceil"
+                      type="cm:depotCeils"></xs:attribute>
+        <!-- Участък -->
+        <xs:attribute name="area_code"
+                      type="cm:depotArea"
+                      use="required"></xs:attribute>
+        <!-- Особености -->
+        <xs:attribute name="peculiarity"
+                      type="cm:stringLength4000"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_depot_soilingType">
+        <!-- Дата на записа-->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Клетка -->
+        <xs:attribute name="ceil"
+                      type="cm:depotCeils"></xs:attribute>
+        <!-- Участък -->
+        <xs:attribute name="area_code"
+                      type="cm:depotArea"
+                      use="required"></xs:attribute>
+        <!-- Особености -->
+        <xs:attribute name="peculiarity"
+                      type="cm:stringLength4000"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_tradersType">
+        <xs:sequence minOccurs="1"
+                     maxOccurs="1">
+            <!-- Търговци или брокери - други бележки -->
+            <xs:element name="r_b_notes"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_notesTraderType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Търговци или брокери - получен отпадък-->
+            <xs:element name="r_b_traders_recv_waste"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_traders_recv_wasteType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Търговци или брокери - предаден отпадък-->
+            <xs:element name="r_b_traders_handed_waste"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_traders_handed_wasteType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <!-- Номер на площадка -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!-- 1 за търговец, 0 за брокер -->
+        <xs:attribute name="is_trader"
+                      type="cm:boolType"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <!--	&lt;!&ndash; Други белжки &ndash;&gt;-->
+    <!--	<xs:complexType name="r_b_traders_notesType">-->
+    <!--		&lt;!&ndash; 1 за търговец, 0 за брокер &ndash;&gt;-->
+    <!--		<xs:attribute name="is_trader"-->
+    <!--            			type="cm:boolType"-->
+    <!--            			use="required"> </xs:attribute>-->
+    <!--		&lt;!&ndash; Дата на записа &ndash;&gt;-->
+    <!--		<xs:attribute name="date_record"-->
+    <!--            			type="xs:date"-->
+    <!--            			use="required"> </xs:attribute>-->
+    <!--		&lt;!&ndash; Други бележки &ndash;&gt;-->
+    <!--		<xs:attribute name="notes"-->
+    <!--            			type="xs:string"-->
+    <!--            			use="required"> </xs:attribute>-->
+    <!--	</xs:complexType>-->
+    <!-- Получен-->
+    <xs:complexType name="r_b_traders_recv_wasteType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка-->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- тип търговец -->
+        <xs:attribute name="trader_type_code"
+                      type="cm:senderTBType"
+                      use="required"></xs:attribute>
+        <!-- Име на търговеца -->
+        <xs:attribute name="orig_name"
+                      type="cm:stringLength500"
+                      use="required"></xs:attribute>
+        <!-- ЕИК -->
+        <xs:attribute name="orig_eic"
+                      type="cm:stringLength500"
+                      use="required"></xs:attribute>
+        <!-- Основание за притежание -->
+        <xs:attribute name="doc_num_grounds"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- Количество (тон) -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"></xs:attribute>
+        <!-- Описание на отпадъка -->
+        <xs:attribute name="waste_descr"
+                      type="cm:stringLength500"></xs:attribute>
+    </xs:complexType>
+    <!-- Предаден -->
+    <xs:complexType name="r_b_traders_handed_wasteType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка-->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- тип търговец -->
+        <xs:attribute name="trader_type_code"
+                      type="cm:senderTBType"
+                      use="required"></xs:attribute>
+        <!-- Име на получател -->
+        <xs:attribute name="orig_name"
+                      type="cm:stringLength500"
+                      use="required"></xs:attribute>
+        <!-- ЕИК на получател -->
+        <xs:attribute name="orig_eic"
+                      type="cm:stringLength500"
+                      use="required"></xs:attribute>
+        <!-- Основание за притежание -->
+        <xs:attribute name="doc_num_grounds"
+                      type="cm:stringLength500"></xs:attribute>
+        <!-- Количество (тон) -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_collect_stortransType">
+        <xs:sequence minOccurs="1"
+                     maxOccurs="1">
+            <!-- Други бележки -->
+            <xs:element name="r_b_notes"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_notesCollectType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Получен отпадък -->
+            <xs:element name="r_b_collect_received"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_collect_receivedType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Предаден отпадък -->
+            <xs:element name="r_b_collect_handed"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_collect_handedType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <!-- Основна дейност -->
+        <xs:attribute name="main_activity_code"
+                      type="cm:book_typeCollectType"
+                      use="required"></xs:attribute>
+        <!-- Номер на площадка -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_collect_receivedType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка -->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- Категориа НУБА / ИУЕЕО-->
+        <xs:attribute name="cat_nuba"
+                      type="cm:catNubaTypeAnexMpsMet"></xs:attribute>
+        <!-- Произход НУБА / ИУЕЕО -->
+        <xs:attribute name="origin_nuba"
+                      type="cm:originNubaTypeAnexMpsText"></xs:attribute>
+        <!-- Тип -->
+        <xs:attribute name="type_originator_code"
+                      type="cm:senderCTSType"
+                      use="required"></xs:attribute>
+        <!-- Име -->
+        <xs:attribute name="name_originator"
+                      type="cm:stringLength512"
+                      use="required"></xs:attribute>
+        <!-- ЕИК -->
+        <xs:attribute name="pin_originator"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Основание -->
+        <xs:attribute name="reason"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Количество тон -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+        <!-- Произход -->
+        <xs:attribute name="reason_origin"
+                      type="cm:ReasonOriginType"></xs:attribute>
+        <!-- Описание на отпадъка -->
+        <xs:attribute name="waste_desc"
+                      type="cm:stringLength2048"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_collect_handedType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка -->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- Тип -->
+        <xs:attribute name="type_receiver_code"
+                      type="cm:receiverType"
+                      use="required"></xs:attribute>
+        <!-- Име -->
+        <xs:attribute name="name_originator"
+                      type="cm:stringLength512"
+                      use="required"></xs:attribute>
+        <!-- ЕИК -->
+        <xs:attribute name="pin_originator"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Основание -->
+        <xs:attribute name="reason"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Код дейност R & D-->
+        <xs:attribute name="op_id_code"
+                      type="cm:wasteOpRDTrBrT"
+                      use="required"></xs:attribute>
+        <!-- Количество тон -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+        <!-- Описание на операцията-->
+        <xs:attribute name="op_description"
+                      type="cm:stringLength512"></xs:attribute>
+
+        <xs:attribute name="waste_type"
+                      type="cm:catMetPack">
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_recovery_disposeType">
+        <xs:sequence minOccurs="1"
+                     maxOccurs="1">
+            <!-- Други бележки -->
+            <xs:element name="r_b_notes"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_notesRDType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Обработен отпадък-->
+            <xs:element name="r_b_rd_treated"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_rd_treatedType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Предаден отпадък -->
+            <xs:element name="r_b_rd_submitted"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_rd_submittedType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Образуван -->
+            <xs:element name="r_b_rd_generated"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_rd_generatedType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Получен отпадък -->
+            <xs:element name="r_b_rd_received"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_rd_receivedType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <!-- Номер на площадка -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"/>
+    </xs:complexType>
+    <xs:complexType name="r_b_rd_receivedType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка -->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- Категория НУБА/ИУЕЕО -->
+        <xs:attribute name="cat_nuba"
+                      type="cm:catNubaTypeAnexMps"></xs:attribute>
+        <!-- Произход НУБА/ИУЕЕО -->
+        <xs:attribute name="origin_nuba"
+                      type="cm:originNubaTypeAnexMps"></xs:attribute>
+        <!-- Тип -->
+        <xs:attribute name="type_originator_code"
+                      type="cm:senderCTSType"
+                      use="required"></xs:attribute>
+        <!-- Име -->
+        <xs:attribute name="name_originator"
+                      type="cm:stringLength512"
+                      use="required"></xs:attribute>
+        <!-- ЕИК -->
+        <xs:attribute name="pin_originator"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Основание за протежание -->
+        <xs:attribute name="reason"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Произход -->
+        <xs:attribute name="reason_origin"
+                      type="cm:ReasonOriginType"></xs:attribute>
+        <!-- Количество тон -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_rd_treatedType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка -->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- Категория НУБА/ИУЕЕО -->
+        <xs:attribute name="cat_nuba"
+                      type="cm:catNubaTypeAnexMpsMet"></xs:attribute>
+        <!-- Произход НУБА/ИУЕЕО -->
+        <xs:attribute name="origin_nuba"
+                      type="cm:originNubaTypeAnexMps"></xs:attribute>
+        <!-- Дейност R И Д -->
+        <xs:attribute name="op_id_code"
+                      type="cm:wasteOpRDTrBrT"
+                      use="required"></xs:attribute>
+        <!-- Описание на дейност -->
+        <xs:attribute name="op_descr"
+                      type="cm:stringLength2048"
+                      use="required"></xs:attribute>
+        <!-- Количество тон -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_rd_generatedType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка -->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"></xs:attribute>
+        <!-- Категория НУБА/ИУЕЕО -->
+        <xs:attribute name="cat_nuba"
+                      type="cm:catNubaTypeAnexMps"></xs:attribute>
+        <!-- Произход НУБА/ИУЕЕО -->
+        <xs:attribute name="origin_nuba"
+                      type="cm:originNubaTypeAnexMps"></xs:attribute>
+        <!-- 'Описание на отпадъка -->
+        <xs:attribute name="waste_desc"
+                      type="cm:stringLength2048"
+                      use="required"></xs:attribute>
+        <!-- Количество тон -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_rd_submittedType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Код на отпадъка -->
+        <xs:attribute name="ewc"
+                      type="ewc:ewcCodeType"
+                      use="required"></xs:attribute>
+        <!-- Категория НУБА/ИУЕЕО -->
+        <xs:attribute name="cat_nuba"
+                      type="cm:catNubaTypeAnexMps"></xs:attribute>
+        <!-- Произход НУБА/ИУЕЕО -->
+        <xs:attribute name="origin_nuba"
+                      type="cm:originNubaTypeAnexMps"></xs:attribute>
+        <!-- Тип получател -->
+        <xs:attribute name="type_receiver_code"
+                      type="cm:receiverType"
+                      use="required"></xs:attribute>
+        <!-- Име на получател -->
+        <xs:attribute name="name_receiver"
+                      type="cm:stringLength512"
+                      use="required"></xs:attribute>
+        <!-- ЕИК на получател -->
+        <xs:attribute name="pin_receiver"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Основание за притежание-->
+        <xs:attribute name="reason"
+                      type="cm:stringLength512"></xs:attribute>
+        <!-- Код на дейност -->
+        <xs:attribute name="op_id_code"
+                      type="cm:wasteOpRDTrBrT"></xs:attribute>
+        <!-- Описание на дейността -->
+        <xs:attribute name="op_descr"
+                      type="cm:stringLength2048"
+                      use="required"></xs:attribute>
+        <!-- Количество тон -->
+        <xs:attribute name="amount_ton"
+                      type="cm:amountPositive"
+                      use="required"></xs:attribute>
+        <!-- Дали е за повторна употреба 0 - Не, 1 - Да-->
+        <xs:attribute name="is_for_reuse"
+                      type="cm:boolType"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_rd_operationsType">
+        <xs:attribute name="op_id_code"
+                      type="cm:wasteOpRDTrBrT"
+                      use="required"/>
+    </xs:complexType>
+    <!-- Отчетна книга за временно съхраняване на отпадъци от живак -->
+    <xs:complexType name="r_b_merc_depotType">
+        <xs:sequence minOccurs="1"
+                     maxOccurs="1">
+            <!-- Други бележки -->
+            <xs:element name="r_b_notes"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_notesMercType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="r_b_merc_cs_inout"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_merc_cs_inoutType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="r_b_merc_tr_inout"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1"
+                                 maxOccurs="1">
+                        <xs:element name="item"
+                                    type="tns:r_b_merc_tr_inoutType"
+                                    minOccurs="1"
+                                    maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <!-- Номер на площадка, за Транспортиране/Транспортиране метали задължително 0 -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <xs:attribute name="book_type_code"
+                      type="cm:book_typeMercType"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_merc_cs_inoutType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <xs:attribute name="in_out"
+                      type="cm:boolCharType"
+                      use="required"></xs:attribute>
+        <xs:attribute name="aton"
+                      type="cm:amountDeciGramNonNegative"
+                      use="required"></xs:attribute>
+        <xs:attribute name="origin"
+                      type="cm:stringLength500"></xs:attribute>
+        <xs:attribute name="op_id_code"
+                      type="cm:wasteOpRDTrBrT"></xs:attribute>
+        <xs:attribute name="aton_left"
+                      type="cm:amountDeciGramNonNegative"
+                      use="required"></xs:attribute>
+        <xs:attribute name="certificate1_descr"
+                      type="cm:stringLength4000"></xs:attribute>
+        <xs:attribute name="certificate2_descr"
+                      type="cm:stringLength4000"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_merc_tr_inoutType">
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <xs:attribute name="in_out"
+                      type="cm:boolCharType"
+                      use="required"></xs:attribute>
+        <xs:attribute name="aton"
+                      type="cm:amountDeciGramNonNegative"
+                      use="required"></xs:attribute>
+        <xs:attribute name="origin"
+                      type="cm:stringLength500"></xs:attribute>
+        <xs:attribute name="op_id_code"
+                      type="cm:wasteOpRDTrBrT"></xs:attribute>
+        <xs:attribute name="aton_left"
+                      type="cm:amountDeciGramNonNegative"
+                      use="required"></xs:attribute>
+        <xs:attribute name="certificate1_descr"
+                      type="cm:stringLength4000"></xs:attribute>
+    </xs:complexType>
+    <!-- Други белжки -->
+    <xs:complexType name="r_b_notesCollectType">
+        <xs:attribute name="book_type_code"
+                      type="cm:book_typeCollectType"
+                      use="required"></xs:attribute>
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Номер на площадка, за Транспортиране/Транспортиране метали задължително 0 -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!-- Други бележки -->
+        <xs:attribute name="notes"
+                      type="cm:stringLength1024"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_notesTraderType">
+        <xs:attribute name="book_type_code"
+                      type="cm:book_typeTraderType"
+                      use="required"></xs:attribute>
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Номер на площадка, за Транспортиране/Транспортиране метали задължително 0 -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!-- Други бележки -->
+        <xs:attribute name="notes"
+                      type="cm:stringLength1024"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_notesMercType">
+        <xs:attribute name="book_type_code"
+                      type="cm:book_typeMercType"
+                      use="required"></xs:attribute>
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Номер на площадка, за Транспортиране/Транспортиране метали задължително 0 -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!-- Други бележки -->
+        <xs:attribute name="notes"
+                      type="cm:stringLength1024"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_notesRDType">
+        <xs:attribute name="book_type_code"
+                      type="cm:book_typeRDType"
+                      use="required"></xs:attribute>
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Номер на площадка, за Транспортиране/Транспортиране метали задължително 0 -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!-- Други бележки -->
+        <xs:attribute name="notes"
+                      type="cm:stringLength1024"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_notesDepotType">
+        <xs:attribute name="book_type_code"
+                      type="cm:book_typeDepotType"
+                      use="required"></xs:attribute>
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Номер на площадка, за Транспортиране/Транспортиране метали задължително 0 -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!-- Други бележки -->
+        <xs:attribute name="notes"
+                      type="cm:stringLength1024"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="r_b_notesWasteType">
+        <xs:attribute name="book_type_code"
+                      type="cm:book_typeWasteType"
+                      use="required"></xs:attribute>
+        <!-- Дата на записа -->
+        <xs:attribute name="date_record"
+                      type="xs:date"
+                      use="required"></xs:attribute>
+        <!-- Номер на площадка, за Транспортиране/Транспортиране метали задължително 0 -->
+        <xs:attribute name="stagenum"
+                      type="cm:stagenumType"
+                      use="required"></xs:attribute>
+        <!-- Други бележки -->
+        <xs:attribute name="notes"
+                      type="cm:stringLength1024"
+                      use="required"></xs:attribute>
+    </xs:complexType>
+</xs:schema>

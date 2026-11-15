@@ -1,0 +1,21 @@
+# Текстът се пази с LF в хранилището и се връща с края на реда на машината.
+# Програмата е само за Windows, затова скриптовете и решението остават с CRLF
+# и на диска — PowerShell 5 и Visual Studio ги искат така.
+* text=auto
+
+*.cs      text diff=csharp
+*.csproj  text
+*.props   text
+*.md      text
+*.json    text
+*.yml     text
+*.xsd     text
+*.sln     text eol=crlf
+*.ps1     text eol=crlf
+*.cmd     text eol=crlf
+
+*.png     binary
+*.ico     binary
+*.xlsx    binary
+*.docx    binary
+*.pdf     binary

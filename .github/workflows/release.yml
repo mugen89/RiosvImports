@@ -1,0 +1,48 @@
+# Издание при етикет: „git tag v1.3.0 && git push origin v1.3.0“.
+#
+# Прави същото като tools\release.ps1 на ръка: проверки, сглобяване, пакет на
+# Velopack с бележките от CHANGELOG.md и качване в публичното хранилище с
+# изданията (виж UpdateFeed.cs). Етикет с тире — „v1.4.0-beta.1“ — излиза като
+# пробно издание и стига само до тези, които са го поискали в „Настройки“.
+#
+# Нужна е тайна RELEASES_TOKEN в това хранилище: ключ (fine-grained token) с
+# право „Contents: Read and write“ САМО върху хранилището с изданията. Вграденият
+# GITHUB_TOKEN не става — той пише само в хранилището, в което върви.
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Проверки
+        run: |
+          dotnet build --nologo -c Release
+          dotnet run --project tests/RiosvImports.Tests -c Release --no-build
+
+      # Номерът на vpk следва пакета Velopack в RiosvImports.App.csproj.
+      - name: Velopack
+        shell: pwsh
+        run: |
+          dotnet tool install -g vpk --version 0.0.1298
+          "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
+
+      - name: Издание
+        shell: pwsh
+        env:
+          RELEASES_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+        run: |
+          $version = '${{ github.ref_name }}'.TrimStart('v')
+          ./tools/release.ps1 -Version $version -Upload
