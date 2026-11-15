@@ -138,6 +138,9 @@ internal static class Theme
     /// <summary>Името на променливата, през която се подава подражаваният мащаб.</summary>
     public const string ZoomVariable = "RIOSV_ZOOM";
 
+    /// <summary>Променливата, с която се подражават шрифтовете на Windows 10.</summary>
+    public const string Win10FontsVariable = "RIOSV_WIN10_FONTS";
+
     private static float ReadEmulated()
     {
         var text = Environment.GetEnvironmentVariable(ZoomVariable)?.Trim().Replace(',', '.').TrimEnd('%');
@@ -272,6 +275,12 @@ internal static class Theme
         var present = installed.Families
             .Select(f => f.Name)
             .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+        // „RIOSV_WIN10_FONTS=1“: шрифтовете на Windows 10, без тези, които носи
+        // само Windows 11. Така на машина с Windows 11 се вижда картината, която
+        // получават хората с Windows 10 — и сървърите на GitHub.
+        if (Environment.GetEnvironmentVariable(Win10FontsVariable) == "1")
+            present.RemoveWhere(name => name.Contains("Variable", StringComparison.OrdinalIgnoreCase));
 
         return families.FirstOrDefault(present.Contains) ?? families[^1];
     }

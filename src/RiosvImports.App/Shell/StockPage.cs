@@ -1842,6 +1842,17 @@ internal sealed class StockPage : ContentPage
         }
 
         _master.Rows.AddRange([.. rows]);
+
+        // Кодът се мери по истинските кодове: на Windows 10 няма „Segoe UI
+        // Variable“ и по-широкият „Segoe UI“ режеше звездичката на опасните
+        // кодове при 100 %. Различните кодове са малко — мерят се за миг.
+        var codeWidth = shares.Select(s => s.Ewc).Distinct()
+            .Select(ewc => TextRenderer.MeasureText(ewc, _master.Font).Width + CellPadding)
+            .DefaultIfEmpty(0).Max();
+
+        var key = _master.Columns[KeyColumn];
+        var wanted = Math.Max(Theme.Scaled(66), codeWidth);
+        if (key.Width != wanted) key.Width = wanted;
     }
 
     /// <summary>Номерът на партидата, както се чете в таблица.</summary>

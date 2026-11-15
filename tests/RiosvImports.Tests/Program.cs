@@ -3008,7 +3008,7 @@ Console.WriteLine("\n### ТЕСТ - изгледите на баланса см�
     Check("страницата се сглобява и превключва без изключение", balanceViewError is null);
     Check($"направени са всичките {viewNotes.Count} проверки", viewNotes.Count == 8, $"{viewNotes.Count}");
     Check("изгледът стига до колоните на таблицата", viewProblems.Count == 0,
-        $"{viewProblems.Count} проблема");
+        $"{viewProblems.Count} проблема" + (viewProblems.Count > 0 ? ": " + string.Join(" | ", viewProblems.Take(5)) : ""));
 }
 
 
@@ -8780,7 +8780,7 @@ Console.WriteLine("### ТЕСТ - образуването се побира н�
 
     Check("образуването се сглобява без изключение", fitError is null);
     Check($"направени са всичките {fitNotes.Count} проверки", fitNotes.Count == 4, $"{fitNotes.Count}");
-    Check("колоните вляво се побират на лаптоп", fitProblems.Count == 0, $"{fitProblems.Count} проблема");
+    Check("колоните вляво се побират на лаптоп", fitProblems.Count == 0, $"{fitProblems.Count} проблема" + (fitProblems.Count > 0 ? ": " + string.Join(" | ", fitProblems.Take(5)) : ""));
 }
 
 
@@ -11348,7 +11348,7 @@ Console.WriteLine("### ТЕСТ - прозорчетата не слагат с�
     Check($"проверени са всичките {barNotes.Count} прозореца", barNotes.Count == 34,
         $"{barNotes.Count}");
     Check("програмата стои на лентата с едно копче", barProblems.Count == 0,
-        $"{barProblems.Count} проблема");
+        $"{barProblems.Count} проблема" + (barProblems.Count > 0 ? ": " + string.Join(" | ", barProblems.Take(5)) : ""));
 }
 
 
@@ -11484,7 +11484,7 @@ Console.WriteLine("### ТЕСТ - работното прозорче тръгв
     Check("трите прозорчета се сглобяват без изключение", splitError is null);
     Check("проверени са трите разделителя", splitChecked == 3, $"{splitChecked}");
     Check("работата взема повече място от избора", splitProblems.Count == 0,
-        $"{splitProblems.Count} проблема");
+        $"{splitProblems.Count} проблема" + (splitProblems.Count > 0 ? ": " + string.Join(" | ", splitProblems.Take(5)) : ""));
 }
 
 
@@ -12205,7 +12205,7 @@ Console.WriteLine("### ТЕСТ - филтрите се пренасят, вме
     Check("лентата се сглобява без изключение", barError is null);
     Check($"направени са всичките {barNotes.Count} проверки", barNotes.Count == 10, $"{barNotes.Count}");
     Check("нито един филтър не се реже и не изчезва", barProblems.Count == 0,
-        $"{barProblems.Count} проблема");
+        $"{barProblems.Count} проблема" + (barProblems.Count > 0 ? ": " + string.Join(" | ", barProblems.Take(5)) : ""));
 }
 
 
@@ -14982,7 +14982,7 @@ Console.WriteLine("### ТЕСТ - договорът на предаването
     Check("договорът минава без изключение", dealError is null);
     Check($"направени са всичките {dealNotes.Count} проверки", dealNotes.Count == 46, $"{dealNotes.Count}");
     Check("договорът се предлага, научава и изравнява по всички пътища към „Предаден“", dealProblems.Count == 0,
-        $"{dealProblems.Count} проблема");
+        $"{dealProblems.Count} проблема" + (dealProblems.Count > 0 ? ": " + string.Join(" | ", dealProblems.Take(5)) : ""));
 }
 
 
@@ -15401,7 +15401,7 @@ Console.WriteLine("### ТЕСТ - „Предаден“ се пресява п�
     Check("„Предаден“ минава без изключение", viewError is null);
     Check($"направени са всичките {viewNotes.Count} проверки", viewNotes.Count == 61, $"{viewNotes.Count}");
     Check("договорът и бележката се пресяват, а „Поотделно“ показва всеки дял веднъж", viewProblems.Count == 0,
-        $"{viewProblems.Count} проблема");
+        $"{viewProblems.Count} проблема" + (viewProblems.Count > 0 ? ": " + string.Join(" | ", viewProblems.Take(5)) : ""));
 }
 
 

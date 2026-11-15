@@ -26,5 +26,16 @@ jobs:
       - name: Сглобяване
         run: dotnet build --nologo -c Release
 
+      # Сървърът на GitHub има екран 1024×768, а проверките за изрязване мерят
+      # лаптоп 1366×700 и монитор 1920×970 — на по-малък екран Windows свива
+      # прозорците и всичко излиза изрязано.
+      - name: Екран 1920×1080
+        shell: powershell
+        run: |
+          try { Set-DisplayResolution -Width 1920 -Height 1080 -Force -ErrorAction Stop }
+          catch { Write-Host "::warning::Екранът не се смени: $($_.Exception.Message)" }
+          Add-Type -AssemblyName System.Windows.Forms
+          $s = [System.Windows.Forms.Screen]::PrimaryScreen
+          Write-Host "::notice::Екран: $($s.Bounds.Width)×$($s.Bounds.Height), работна площ $($s.WorkingArea.Width)×$($s.WorkingArea.Height)"
       - name: Проверки
         run: dotnet run --project tests/RiosvImports.Tests -c Release --no-build
