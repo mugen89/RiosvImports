@@ -56,4 +56,10 @@ jobs:
           RELEASES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           $version = '${{ github.ref_name }}'.TrimStart('v')
-          ./tools/release.ps1 -Version $version -Upload
+          # Грешката излиза и като бележка към хода — тя се вижда без вход.
+          try { ./tools/release.ps1 -Version $version -Upload }
+          catch {
+            $where = $_.InvocationInfo.PositionMessage -replace "`r?`n", ' '
+            Write-Host "::error::$($_.Exception.Message) | $where"
+            exit 1
+          }
